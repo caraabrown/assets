@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Alanne / Clarity — Design System Reference</title>
+<link rel="icon" href="https://caraabrown.com/wp-content/uploads/2025/11/Cara-A.-Brown-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --black:  #0d0d0b;
+  --white:  #f6f5f1;
+  --off:    #efede8;
+  --mid:    #888680;
+  --rule:   #dddad3;
+  --ink:    #1e1e1c;
+  --navy:   #1a2744;
+  --accent: #2a4080;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* DOC CHROME */
+.doc-header {
+  background: var(--black);
+  color: var(--white);
+  padding: 56px 60px 52px;
+  border-bottom: 3px solid var(--accent);
+}
+.doc-header .label {
+  font-size: .6rem; font-weight: 600;
+  letter-spacing: .38em; text-transform: uppercase;
+  color: rgba(246,245,241,.38);
+  margin-bottom: 10px;
+}
+.doc-header h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.2rem; font-weight: 300;
+  letter-spacing: -.02em;
+  color: var(--white);
+}
+.doc-header h1 strong { font-weight: 600; }
+.doc-header .sub {
+  margin-top: 10px;
+  font-size: .82rem; color: rgba(246,245,241,.42);
+  font-weight: 300;
+}
+
+.doc-nav {
+  background: var(--off);
+  border-bottom: 1px solid var(--rule);
+  padding: 0 60px;
+  display: flex; gap: 0; overflow-x: auto;
+  position: sticky; top: 0; z-index: 100;
+}
+.doc-nav a {
+  display: block; padding: 14px 18px;
+  font-size: .62rem; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mid); text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.doc-nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.doc-body { max-width: 1100px; margin: 0 auto; padding: 0 60px 100px; }
+
+/* SECTION */
+.ds-section {
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--rule);
+}
+.ds-section:last-child { border-bottom: none; }
+.ds-eyebrow {
+  font-size: .58rem; font-weight: 600;
+  letter-spacing: .36em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.ds-section h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem; font-weight: 300;
+  letter-spacing: -.02em;
+  color: var(--ink);
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+.ds-section h2 strong { font-weight: 600; }
+
+.token-note {
+  font-size: .78rem; color: var(--mid);
+  line-height: 1.7; margin-bottom: 36px;
+  max-width: 680px;
+}
+
+/* COLOR */
+.swatch-row { display: flex; gap: 2px; flex-wrap: wrap; margin-bottom: 36px; }
+.swatch {
+  display: flex; flex-direction: column;
+  min-width: 160px; flex: 1;
+}
+.swatch-chip {
+  height: 80px;
+  border: 1px solid rgba(0,0,0,.06);
+}
+.swatch-info {
+  background: var(--off);
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  border-top: none;
+}
+.swatch-name {
+  font-size: .68rem; font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--ink);
+  display: block; margin-bottom: 2px;
+}
+.swatch-token {
+  font-family: 'Courier New', monospace;
+  font-size: .68rem; color: var(--accent);
+  display: block; margin-bottom: 2px;
+}
+.swatch-hex {
+  font-family: 'Courier New', monospace;
+  font-size: .68rem; color: var(--mid);
+  display: block;
+}
+.swatch-use {
+  font-size: .68rem; color: var(--mid);
+  margin-top: 4px; display: block; line-height: 1.4;
+}
+
+/* USAGE TABLE */
+.usage-table {
+  width: 100%; border-collapse: collapse;
+  font-size: .82rem;
+  margin-bottom: 32px;
+}
+.usage-table th {
+  text-align: left; padding: 10px 16px;
+  background: var(--off);
+  font-size: .6rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--mid);
+  border: 1px solid var(--rule);
+}
+.usage-table td {
+  padding: 12px 16px;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.usage-table td:first-child {
+  font-family: 'Courier New', monospace;
+  font-size: .75rem; color: var(--accent);
+  white-space: nowrap; width: 160px;
+}
+.usage-table tr:nth-child(even) td { background: var(--off); }
+
+/* TYPOGRAPHY SPECIMENS */
+.type-specimen {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 40px 44px;
+  margin-bottom: 2px;
+}
+.type-specimen + .type-specimen { margin-top: 0; }
+.type-meta {
+  font-size: .6rem; font-weight: 600;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 14px;
+  display: flex; gap: 16px; align-items: center;
+  flex-wrap: wrap;
+}
+.type-meta code {
+  font-family: 'Courier New', monospace;
+  background: var(--off);
+  padding: 2px 8px;
+  border: 1px solid var(--rule);
+  font-size: .65rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--accent);
+}
+
+/* SPACING */
+.space-row {
+  display: flex; gap: 2px; flex-wrap: wrap; margin-bottom: 12px;
+}
+.space-item {
+  flex: 1; min-width: 100px;
+  background: var(--off);
+  border: 1px solid var(--rule);
+  padding: 16px;
+  text-align: center;
+}
+.space-bar {
+  background: var(--accent);
+  opacity: .25;
+  margin: 0 auto 10px;
+  width: 100%;
+}
+.space-val {
+  font-family: 'Courier New', monospace;
+  font-size: .7rem; color: var(--accent);
+  display: block; margin-bottom: 2px;
+}
+.space-label {
+  font-size: .65rem; color: var(--mid);
+  display: block;
+}
+
+/* COMPONENT DEMOS */
+.demo-block {
+  background: var(--off);
+  border: 1px solid var(--rule);
+  padding: 48px 44px;
+  margin-bottom: 2px;
+}
+.demo-label {
+  font-size: .58rem; font-weight: 600;
+  letter-spacing: .26em; text-transform: uppercase;
+  color: var(--mid); margin-bottom: 24px;
+}
+
+/* Eyebrow specimen */
+.spec-eyebrow {
+  font-size: 9px; font-weight: 500;
+  letter-spacing: .32em; text-transform: uppercase;
+  color: var(--mid);
+}
+.spec-eyebrow-accent {
+  font-size: 9px; font-weight: 500;
+  letter-spacing: .32em; text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Button specimens */
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: .72rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  padding: 14px 36px;
+  cursor: pointer; text-decoration: none;
+  transition: opacity .25s, transform .2s;
+  border: none; border-radius: 0;
+}
+.btn:hover { opacity: .75; transform: translateY(-1px); }
+.btn-dark { background: var(--black); color: var(--white); }
+.btn-outline-dark { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.btn-navy { background: var(--navy); color: var(--white); }
+.btn-outline-navy { background: transparent; color: var(--navy); border: 1px solid var(--navy); }
+.btn-white { background: var(--white); color: var(--black); }
+.btn-outline-white { background: transparent; color: var(--white); border: 1px solid rgba(246,245,241,.4); }
+
+/* Card specimens */
+.card-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--rule); margin-bottom: 12px; }
+.card {
+  background: var(--white); padding: 40px 32px;
+  position: relative; overflow: hidden;
+  transition: background .3s;
+}
+.card::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .4s cubic-bezier(.16,1,.3,1);
+}
+.card:hover { background: var(--off); }
+.card:hover::after { transform: scaleX(1); }
+.card-tag {
+  font-size: .62rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 10px; display: block;
+}
+.card h4 {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.25rem; font-weight: 400;
+  color: var(--ink); margin-bottom: 8px;
+}
+.card p { font-size: .84rem; color: var(--mid); line-height: 1.75; }
+
+/* Stat specimens */
+.stat-row-demo {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 2px; background: rgba(246,245,241,.07);
+}
+.stat-demo {
+  background: var(--black); padding: 36px 28px;
+  border-top: 1px solid rgba(246,245,241,.07);
+}
+.stat-n-demo {
+  font-family: 'EB Garamond', serif;
+  font-size: 2.4rem; color: var(--white);
+  line-height: 1; margin-bottom: 8px; display: block;
+}
+.stat-l-demo { font-size: .76rem; color: rgba(246,245,241,.45); line-height: 1.5; }
+
+/* Quote specimen */
+.quote-demo {
+  border-left: 2px solid rgba(246,245,241,.18);
+  padding-left: 36px; background: var(--black); padding: 40px 36px 40px 52px;
+  border-left: 2px solid rgba(246,245,241,.18);
+}
+.quote-demo blockquote {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.5rem; font-style: italic;
+  color: var(--white); line-height: 1.55; margin-bottom: 14px;
+}
+.quote-demo cite {
+  font-style: normal; font-size: .7rem;
+  font-weight: 500; letter-spacing: .18em;
+  text-transform: uppercase; color: rgba(246,245,241,.38);
+}
+
+/* Engagement row specimen */
+.eng-demo {
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+  padding: 28px 0;
+}
+.eng-demo-head {
+  display: flex; align-items: baseline;
+  gap: 12px 20px; flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.eng-client { font-family: 'EB Garamond', serif; font-size: 1.2rem; color: var(--ink); }
+.eng-meta { font-size: .8rem; color: var(--mid); }
+.eng-year { font-size: .78rem; color: var(--mid); font-style: italic; margin-left: auto; }
+.eng-li { font-size: .86rem; color: var(--mid); padding-left: 18px; position: relative; margin-bottom: 8px; line-height: 1.7; }
+.eng-li::before { content: '—'; position: absolute; left: 0; color: var(--rule); }
+.eng-li strong { color: var(--ink); font-weight: 500; }
+
+/* Section patterns */
+.section-pattern {
+  height: 80px; display: flex; align-items: center;
+  padding: 0 32px;
+  font-size: .7rem; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mid);
+  border: 1px solid var(--rule);
+  margin-bottom: 2px;
+}
+
+/* Rules */
+.rule-demo { margin: 20px 0; }
+.rule-demo hr { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+/* Grid patterns */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--rule); }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: var(--rule); }
+.grid-cell { background: var(--white); padding: 28px 24px; font-size: .78rem; color: var(--mid); }
+
+.warning-box {
+  background: #fdf8f0;
+  border: 1px solid #e8d8b0;
+  border-left: 3px solid #c8960a;
+  padding: 18px 20px;
+  font-size: .82rem;
+  color: var(--ink);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+.warning-box strong { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <img src="https://caraabrown.com/wp-content/uploads/2025/11/Cara-A.-Brown-icon.png" style="height:48px; width:auto; margin-bottom:20px; display:block;">
+  <div class="label">Alanne International · Clarity Brand</div>
+  <h1><strong>Design</strong> System Reference</h1>
+  <div class="sub">getclarity.consulting · caraabrown.com · alanne resume · all brand touchpoints</div>
+</div>
+
+<nav class="doc-nav">
+  <a href="#colors">Colors</a>
+  <a href="#typography">Typography</a>
+  <a href="#spacing">Spacing</a>
+  <a href="#buttons">Buttons</a>
+  <a href="#components">Components</a>
+  <a href="#sections">Sections</a>
+  <a href="#rules">Rules</a>  <a href="#icon">Icon</a>
+</nav>
+
+<div class="doc-body">
+
+<!-- COLORS -->
+<section class="ds-section" id="colors">
+  <div class="ds-eyebrow">01 · Foundations</div>
+  <h2><strong>Color</strong> Tokens</h2>
+  <p class="token-note">The palette is warm, restrained, and editorial. No teal. No gradients. Cream whites and near-blacks carry the weight; deep navy is the only accent. All surfaces use the warm white family — never pure #ffffff.</p>
+
+  <div class="swatch-row">
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#0d0d0b;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Black</span>
+        <span class="swatch-token">--black</span>
+        <span class="swatch-hex">#0d0d0b</span>
+        <span class="swatch-use">Dark section backgrounds, nav (scrolled), footer</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#f6f5f1; border:1px solid #e0ddd7;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">White</span>
+        <span class="swatch-token">--white</span>
+        <span class="swatch-hex">#f6f5f1</span>
+        <span class="swatch-use">Primary page background, card backgrounds</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#efede8; border:1px solid #e0ddd7;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Off-White</span>
+        <span class="swatch-token">--off</span>
+        <span class="swatch-hex">#efede8</span>
+        <span class="swatch-use">Alternating sections, hover states, table rows</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#1e1e1c;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Ink</span>
+        <span class="swatch-token">--ink</span>
+        <span class="swatch-hex">#1e1e1c</span>
+        <span class="swatch-use">Body text, headings on light backgrounds</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#888680;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Mid</span>
+        <span class="swatch-token">--mid</span>
+        <span class="swatch-hex">#888680</span>
+        <span class="swatch-use">Secondary text, captions, eyebrows on light</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#dddad3; border:1px solid #ccc;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Rule</span>
+        <span class="swatch-token">--rule</span>
+        <span class="swatch-hex">#dddad3</span>
+        <span class="swatch-use">Grid gaps, dividers, borders, ghost numerals</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#1a2744;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Navy</span>
+        <span class="swatch-token">--navy</span>
+        <span class="swatch-hex">#1a2744</span>
+        <span class="swatch-use">CTA section background, dark accent blocks</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#2a4080;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Accent</span>
+        <span class="swatch-token">--accent</span>
+        <span class="swatch-hex">#2a4080</span>
+        <span class="swatch-use">Tags, labels, hover bars, links — THE only accent</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    <strong>Never use:</strong> teal, cyan, purple, green, gold, or any saturated color as an accent. Never use pure white (#ffffff) or pure black (#000000). The warm white family maintains the editorial luxury feel that signals premium positioning to director-level and above audiences.
+  </div>
+
+  <table class="usage-table">
+    <thead><tr><th>Context</th><th>Background</th><th>Text</th><th>Border</th></tr></thead>
+    <tbody>
+      <tr><td>Light section</td><td>--white (#f6f5f1)</td><td>--ink (#1e1e1c)</td><td>--rule (#dddad3)</td></tr>
+      <tr><td>Alt section</td><td>--off (#efede8)</td><td>--ink (#1e1e1c)</td><td>--rule (#dddad3)</td></tr>
+      <tr><td>Dark section</td><td>--black (#0d0d0b)</td><td>--white (#f6f5f1)</td><td>rgba(246,245,241,.07)</td></tr>
+      <tr><td>CTA / Navy section</td><td>--navy (#1a2744)</td><td>--white (#f6f5f1)</td><td>rgba(246,245,241,.1)</td></tr>
+      <tr><td>Card hover (light)</td><td>--off (#efede8)</td><td>--ink (#1e1e1c)</td><td>--rule</td></tr>
+      <tr><td>Muted text (light bg)</td><td>—</td><td>--mid (#888680)</td><td>—</td></tr>
+      <tr><td>Muted text (dark bg)</td><td>—</td><td>rgba(246,245,241,.45)</td><td>—</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section class="ds-section" id="typography">
+  <div class="ds-eyebrow">02 · Typography</div>
+  <h2><strong>Type</strong> System</h2>
+  <p class="token-note">Two fonts only. EB Garamond for editorial display moments — large headings and block quotes — always at weight 400, often italic. Outfit for everything functional: navigation, body, eyebrows, buttons, labels. Never swap these roles.</p>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      Display Heading · EB Garamond 400 · Italic
+      <code>font-family:'EB Garamond',serif; font-style:italic; font-size:clamp(2rem,3.2vw,3rem); font-weight:400;</code>
+    </div>
+    <div style="font-family:'EB Garamond',serif; font-style:italic; font-size:clamp(2rem,3.2vw,3rem); font-weight:400; color:#1e1e1c; line-height:1.08; letter-spacing:-.025em;">
+      Most organizational problems are misdiagnosed.
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      Display Heading · EB Garamond 400 · Upright
+      <code>font-family:'EB Garamond',serif; font-size:clamp(2rem,3.2vw,3rem); font-weight:400;</code>
+    </div>
+    <div style="font-family:'EB Garamond',serif; font-size:clamp(2rem,3.2vw,3rem); font-weight:400; color:#1e1e1c; line-height:1.08; letter-spacing:-.025em;">
+      Complexity transformed into Clarity.
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      Firm Name / Page Title · Outfit 200–300
+      <code>font-family:'Outfit',sans-serif; font-size:clamp(2.8rem,6vw,5.6rem); font-weight:200;</code>
+    </div>
+    <div style="font-family:'Outfit',sans-serif; font-size:clamp(2.8rem,5vw,5rem); font-weight:200; color:#1e1e1c; line-height:1; letter-spacing:-.02em;">
+      <strong style="font-weight:600;">Alanne</strong> International
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      Body Text · Outfit 300
+      <code>font-family:'Outfit',sans-serif; font-size:1rem; font-weight:300; line-height:1.85;</code>
+    </div>
+    <p style="font-family:'Outfit',sans-serif; font-size:1rem; font-weight:300; color:#888680; line-height:1.85; max-width:640px;">
+      Alanne International is an independent design strategy and service design consultancy delivering organizational transformation across private, public, and nonprofit sectors. Founded and led by Cara A. Brown, MBA — a practitioner with 20+ years of experience helping organizations solve problems that have resisted every previous attempt at resolution.
+    </p>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      Eyebrow Label · Outfit 500 · Uppercase
+      <code>font-size:9px; font-weight:500; letter-spacing:.32em; text-transform:uppercase; color:var(--mid);</code>
+    </div>
+    <span class="spec-eyebrow">Firm Overview</span>
+    &nbsp;&nbsp;&nbsp;
+    <span class="spec-eyebrow-accent">Practice Areas</span>
+    <div style="margin-top:8px; font-size:.75rem; color:#888680;">Left: --mid color (neutral). Right: --accent color (emphasis). Use consistently.</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      Section Tag / Category Label · Outfit 500
+      <code>font-size:.68rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--accent);</code>
+    </div>
+    <span style="font-size:.68rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:#2a4080;">Enterprise Strategy &amp; Transformation</span>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      Pull Quote · EB Garamond Italic
+      <code>font-family:'EB Garamond',serif; font-style:italic; font-size:1.5rem; color:var(--white);</code>
+    </div>
+    <div class="quote-demo">
+      <blockquote>"Working with Cara changes how you see the problem."</blockquote>
+      <cite>Rodney McMullen · CEO, Kroger</cite>
+    </div>
+  </div>
+
+  <table class="usage-table" style="margin-top:32px;">
+    <thead><tr><th>Element</th><th>Font</th><th>Weight</th><th>Size</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>h1 / firm name</td><td>Outfit</td><td>200 + 600</td><td>clamp(2.8rem,6vw,5.6rem)</td><td>Mixed weight: light body, bold key word</td></tr>
+      <tr><td>h2 display</td><td>EB Garamond</td><td>400</td><td>clamp(2rem,3.2vw,3rem)</td><td>Often italic. Letter-spacing -.025em</td></tr>
+      <tr><td>h3 section</td><td>EB Garamond</td><td>400</td><td>clamp(1.2rem,1.8vw,1.5rem)</td><td>Upright or italic</td></tr>
+      <tr><td>Eyebrow</td><td>Outfit</td><td>500</td><td>9px</td><td>Letter-spacing .32em. ALL CAPS. --mid or --accent</td></tr>
+      <tr><td>Body</td><td>Outfit</td><td>300</td><td>1rem (16px)</td><td>Line-height 1.85. Color --mid on light bg</td></tr>
+      <tr><td>Tag/label</td><td>Outfit</td><td>500</td><td>.68rem</td><td>Letter-spacing .22em. ALL CAPS. --accent</td></tr>
+      <tr><td>Button</td><td>Outfit</td><td>500</td><td>.75rem</td><td>Letter-spacing .22em. ALL CAPS</td></tr>
+      <tr><td>Nav link</td><td>Outfit</td><td>500</td><td>.68rem</td><td>Letter-spacing .18em. ALL CAPS</td></tr>
+      <tr><td>Pull quote</td><td>EB Garamond</td><td>400 italic</td><td>clamp(1.25rem,1.9vw,1.7rem)</td><td>On dark backgrounds only</td></tr>
+      <tr><td>Cite / attribution</td><td>Outfit</td><td>500</td><td>.73rem</td><td>Letter-spacing .18em. ALL CAPS. rgba white .38</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SPACING -->
+<section class="ds-section" id="spacing">
+  <div class="ds-eyebrow">03 · Spacing</div>
+  <h2><strong>Space</strong> Scale</h2>
+  <p class="token-note">Spacing is generous. Sections breathe. The layout signals confidence, not density. Key rule: grid gaps are always 2px (hairline) using <code>background: var(--rule)</code> on the grid parent — not margin, not padding.</p>
+
+  <div class="space-row">
+    <div class="space-item"><div class="space-bar" style="height:4px;"></div><span class="space-val">2px</span><span class="space-label">Grid gap</span></div>
+    <div class="space-item"><div class="space-bar" style="height:8px;"></div><span class="space-val">14px</span><span class="space-label">Btn gap</span></div>
+    <div class="space-item"><div class="space-bar" style="height:16px;"></div><span class="space-val">24px</span><span class="space-label">Inline pad</span></div>
+    <div class="space-item"><div class="space-bar" style="height:24px;"></div><span class="space-val">40px</span><span class="space-label">Card pad</span></div>
+    <div class="space-item"><div class="space-bar" style="height:40px;"></div><span class="space-val">60px</span><span class="space-label">Container H</span></div>
+    <div class="space-item"><div class="space-bar" style="height:60px;"></div><span class="space-val">80px</span><span class="space-label">Col gap</span></div>
+    <div class="space-item"><div class="space-bar" style="height:80px;"></div><span class="space-val">110px</span><span class="space-label">Section</span></div>
+    <div class="space-item"><div class="space-bar" style="height:100px;"></div><span class="space-val">130px</span><span class="space-label">CTA section</span></div>
+  </div>
+
+  <table class="usage-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+    <tbody>
+      <tr><td>grid-gap</td><td>2px</td><td>Between all grid cards/columns — creates hairline rule effect</td></tr>
+      <tr><td>container-pad</td><td>0 60px</td><td>Horizontal padding on .container (32px on tablet, 20px on mobile)</td></tr>
+      <tr><td>container-max</td><td>1200px</td><td>max-width on all .container wrappers</td></tr>
+      <tr><td>section-pad</td><td>110px 0</td><td>Top/bottom padding on all major sections</td></tr>
+      <tr><td>card-pad</td><td>52px 40px</td><td>Interior padding on service/work cards</td></tr>
+      <tr><td>stat-pad</td><td>40px 32px</td><td>Interior padding on stat cells</td></tr>
+      <tr><td>column-gap</td><td>80px</td><td>Gap between two-column grid columns</td></tr>
+      <tr><td>eyebrow-mb</td><td>1.2rem</td><td>Margin-bottom after eyebrow labels</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- BUTTONS -->
+<section class="ds-section" id="buttons">
+  <div class="ds-eyebrow">04 · Interaction</div>
+  <h2><strong>Buttons</strong> &amp; Links</h2>
+  <p class="token-note">Buttons are always sharp-cornered (border-radius: 0). No rounded corners anywhere in this system. Hover state is always opacity .75 + translateY(-1px) — never color change or background-flash.</p>
+
+  <div class="demo-block" style="background:var(--white);">
+    <div class="demo-label">On Light Background</div>
+    <div class="btn-row">
+      <a class="btn btn-dark" href="#">Get in Touch</a>
+      <a class="btn btn-outline-dark" href="#">Schedule a Call</a>
+      <a class="btn btn-navy" href="#">Book a Conversation</a>
+      <a class="btn btn-outline-navy" href="#">View Portfolio</a>
+    </div>
+  </div>
+  <div class="demo-block" style="background:var(--black); margin-top:2px;">
+    <div class="demo-label" style="color:rgba(246,245,241,.38);">On Dark Background</div>
+    <div class="btn-row">
+      <a class="btn btn-white" href="#">Get in Touch</a>
+      <a class="btn btn-outline-white" href="#">Schedule a Call</a>
+    </div>
+  </div>
+
+  <table class="usage-table" style="margin-top:32px;">
+    <thead><tr><th>Class</th><th>Background</th><th>Text</th><th>When to use</th></tr></thead>
+    <tbody>
+      <tr><td>.btn-dark</td><td>--black</td><td>--white</td><td>Primary CTA on light sections</td></tr>
+      <tr><td>.btn-outline-dark</td><td>transparent</td><td>--ink</td><td>Secondary CTA on light sections</td></tr>
+      <tr><td>.btn-navy</td><td>--navy</td><td>--white</td><td>Primary CTA on off-white sections</td></tr>
+      <tr><td>.btn-white</td><td>--white</td><td>--black</td><td>Primary CTA on dark/navy sections</td></tr>
+      <tr><td>.btn-outline-white</td><td>transparent</td><td>--white</td><td>Secondary CTA on dark/navy sections</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- COMPONENTS -->
+<section class="ds-section" id="components">
+  <div class="ds-eyebrow">05 · Components</div>
+  <h2><strong>Core</strong> Components</h2>
+
+  <div class="demo-label" style="margin-bottom:16px;">Service / Work Card (3-column grid)</div>
+  <div class="card-row" style="margin-bottom:32px;">
+    <div class="card">
+      <span class="card-tag">01</span>
+      <h4>Enterprise Strategy &amp; Transformation</h4>
+      <p>Long-horizon strategy · Operating model design · Organizational diagnostics · Change management</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">02</span>
+      <h4>Service Design &amp; Experience Architecture</h4>
+      <p>End-to-end service design · Service blueprinting · Journey mapping · Systems diagnosis</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">03</span>
+      <h4>Brand Architecture &amp; Market Strategy</h4>
+      <p>Brand system design · Positioning &amp; narrative · Go-to-market strategy · Launch strategy</p>
+    </div>
+  </div>
+  <p style="font-size:.75rem; color:var(--mid); margin-bottom:48px;">Hover to see accent bar animation. Grid gap is 2px with <code style="font-size:.72rem; background:var(--off); padding:2px 6px; border:1px solid var(--rule);">background:var(--rule)</code> on parent.</p>
+
+  <div class="demo-label" style="margin-bottom:16px;">Stat Block (dark background)</div>
+  <div style="background:var(--black); padding:40px; margin-bottom:32px;">
+    <div class="stat-row-demo">
+      <div class="stat-demo"><span class="stat-n-demo">$270M</span><span class="stat-l-demo">Weekly enterprise exposure quantified &amp; resolved</span></div>
+      <div class="stat-demo"><span class="stat-n-demo">+100pt</span><span class="stat-l-demo">NPS swing from −36 to +49 at enterprise scale</span></div>
+      <div class="stat-demo"><span class="stat-n-demo">97.5%</span><span class="stat-l-demo">Reduction in employee theft across 20K workforce</span></div>
+      <div class="stat-demo"><span class="stat-n-demo">$500K</span><span class="stat-l-demo">Competitive grant secured via impact methodology</span></div>
+    </div>
+  </div>
+
+  <div class="demo-label" style="margin-bottom:16px;">Engagement Row (light background, hairline rules)</div>
+  <div style="margin-bottom:32px;">
+    <div class="eng-demo">
+      <div class="eng-demo-head">
+        <span class="eng-client">Kroger</span>
+        <span class="eng-meta">Enterprise Logistics &amp; Supply Chain Strategy</span>
+        <span class="eng-year">2022–2025</span>
+      </div>
+      <div class="eng-li">Co-led the 2024–2027 Transportation Strategy — the <strong>first unified strategic direction a $24M/year technology function had ever had.</strong></div>
+      <div class="eng-li">Designed an enterprise driver experience program: <strong>NPS −36 → +49, satisfaction 36% → 74%.</strong></div>
+    </div>
+    <div class="eng-demo">
+      <div class="eng-demo-head">
+        <span class="eng-client">GardaWorld</span>
+        <span class="eng-meta">Post-M&amp;A Culture Integration · 20,000-Person Global Workforce</span>
+        <span class="eng-year">2010–2012</span>
+      </div>
+      <div class="eng-li">Results: employee theft <strong>20% → 0.5%</strong> (97.5% reduction); absenteeism <strong>30% → 5%</strong> (83% reduction).</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION PATTERNS -->
+<section class="ds-section" id="sections">
+  <div class="ds-eyebrow">06 · Layout</div>
+  <h2><strong>Section</strong> Patterns</h2>
+  <p class="token-note">Sections alternate between warm white and off-white for light rhythm. Dark (--black) and navy (--navy) sections are used sparingly for high-impact moments — stats, CTA, quotes. Never stack two dark sections.</p>
+
+  <div class="section-pattern" style="background:#f6f5f1; color:#888680;">--white · #f6f5f1 · Primary light section</div>
+  <div class="section-pattern" style="background:#efede8; color:#888680;">--off · #efede8 · Alternating section / hover state</div>
+  <div class="section-pattern" style="background:#0d0d0b; color:rgba(246,245,241,.42);">--black · #0d0d0b · Stats, marquee, footer, nav (scrolled)</div>
+  <div class="section-pattern" style="background:#1a2744; color:rgba(246,245,241,.42);">--navy · #1a2744 · CTA section only</div>
+
+  <div style="margin-top:36px;">
+    <div class="demo-label" style="margin-bottom:16px;">Two-column grid layout (gap:2px on parent)</div>
+    <div class="grid-2" style="margin-bottom:2px;">
+      <div class="grid-cell">Column A — Lead / intro / headline text</div>
+      <div class="grid-cell">Column B — Body copy, supporting text, bullets</div>
+    </div>
+    <div class="demo-label" style="margin-bottom:16px; margin-top:32px;">Three-column grid layout (gap:2px on parent)</div>
+    <div class="grid-3">
+      <div class="grid-cell">Card / Service 01</div>
+      <div class="grid-cell">Card / Service 02</div>
+      <div class="grid-cell">Card / Service 03</div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section class="ds-section" id="rules">
+  <div class="ds-eyebrow">07 · Rules</div>
+  <h2><strong>Design</strong> Rules</h2>
+
+  <table class="usage-table">
+    <thead><tr><th>Rule</th><th>Requirement</th></tr></thead>
+    <tbody>
+      <tr><td>Border radius</td><td>Always 0. No rounded corners anywhere.</td></tr>
+      <tr><td>Grid gaps</td><td>Always 2px. Set with gap:2px + background:var(--rule) on parent.</td></tr>
+      <tr><td>Accent color</td><td>--accent (#2a4080) is the only permitted accent. No teal, green, gold, purple.</td></tr>
+      <tr><td>Serif usage</td><td>EB Garamond for h2, h3, pull quotes, stat numbers only. Never for h2/h3 in all-caps.</td></tr>
+      <tr><td>Uppercase text</td><td>Only in Outfit, never in EB Garamond.</td></tr>
+      <tr><td>Hover — cards</td><td>background → --off. Accent bar scaleX(0→1) on ::after.</td></tr>
+      <tr><td>Hover — buttons</td><td>opacity .75 + translateY(-1px). No color/bg change.</td></tr>
+      <tr><td>Reveal animation</td><td>opacity 0→1 + translateY(22px→0), .75s ease. Use IntersectionObserver.</td></tr>
+      <tr><td>Nav</td><td>Transparent until scroll &gt; 60px, then background: rgba(13,13,11,.94) + backdrop-filter: blur(12px).</td></tr>
+      <tr><td>Fonts</td><td>EB Garamond + Outfit only. No third font.</td></tr>
+      <tr><td>Backgrounds</td><td>Never pure #fff or #000. Always --white (#f6f5f1) or --black (#0d0d0b).</td></tr>
+      <tr><td>Section rhythm</td><td>Alternate white → off-white → dark → white. Max one dark section per page.</td></tr>
+      <tr><td>Emoji / icons</td><td>None. Use typographic marks (—, ·, →) or SVG only if truly needed.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- BRAND ASSET -->
+<section class="ds-section" id="icon">
+  <div class="ds-eyebrow">08 · Brand Asset</div>
+  <h2><strong>Principal</strong> Icon</h2>
+  <p class="token-note">The canonical icon for Cara A. Brown / Alanne International. Use this URL directly in any project, chat, or handoff. Do not re-upload or create alternate versions.</p>
+
+  <div style="display:grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; margin-bottom: 36px;">
+
+    <div style="display:flex; flex-direction:column; gap:2px;">
+      <!-- On white -->
+      <div style="background:var(--white); border:1px solid var(--rule); padding:40px; display:flex; align-items:center; justify-content:center; width:200px;">
+        <img src="https://caraabrown.com/wp-content/uploads/2025/11/Cara-A.-Brown-icon.png" style="height:80px; width:auto; display:block;">
+      </div>
+      <div style="background:var(--off); border:1px solid var(--rule); padding:40px; display:flex; align-items:center; justify-content:center; width:200px;">
+        <img src="https://caraabrown.com/wp-content/uploads/2025/11/Cara-A.-Brown-icon.png" style="height:80px; width:auto; display:block;">
+      </div>
+      <div style="background:var(--black); border:1px solid var(--rule); padding:40px; display:flex; align-items:center; justify-content:center; width:200px;">
+        <img src="https://caraabrown.com/wp-content/uploads/2025/11/Cara-A.-Brown-icon.png" style="height:80px; width:auto; display:block;">
+      </div>
+    </div>
+
+    <div>
+      <table class="usage-table">
+        <thead><tr><th>Property</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Canonical URL</td>
+            <td style="word-break:break-all; font-family:'Courier New',monospace; font-size:.72rem; color:#2a4080;">https://caraabrown.com/wp-content/uploads/2025/11/Cara-A.-Brown-icon.png</td>
+          </tr>
+          <tr><td>Format</td><td>PNG</td></tr>
+          <tr><td>Usage</td><td>Favicon, chat avatars, document headers, email signatures, presentation title slides</td></tr>
+          <tr><td>Minimum size</td><td>32px × 32px</td></tr>
+          <tr><td>Backgrounds</td><td>Works on --white, --off, and --black. Test before using on --navy.</td></tr>
+          <tr><td>Do not</td><td>Recolor, crop, add drop shadows, place on busy backgrounds, or stretch</td></tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top: 24px; background:var(--off); border:1px solid var(--rule); padding: 20px 24px;">
+        <div style="font-size:.6rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Copy this URL</div>
+        <code style="font-family:'Courier New',monospace; font-size:.78rem; color:var(--accent); word-break:break-all; display:block; line-height:1.6;">https://caraabrown.com/wp-content/uploads/2025/11/Cara-A.-Brown-icon.png</code>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- /doc-body -->
+</body>
+</html>
