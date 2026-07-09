@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cara A. Brown — Design System Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --black: #0d0d0b;
+  --white: #f6f5f1;
+  --off:   #efede8;
+  --mid:   #888680;
+  --rule:  #dddad3;
+  --ink:   #1e1e1c;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── DOC CHROME ─────────────────────────────── */
+.doc-header {
+  background: var(--black);
+  color: var(--white);
+  padding: 56px 60px 52px;
+  border-bottom: 3px solid var(--mid);
+}
+.doc-header .label {
+  font-size: .6rem; font-weight: 600;
+  letter-spacing: .38em; text-transform: uppercase;
+  color: rgba(246,245,241,.38);
+  margin-bottom: 10px;
+}
+.doc-header h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.2rem; font-weight: 300;
+  letter-spacing: -.02em; color: var(--white);
+}
+.doc-header h1 strong { font-weight: 600; }
+.doc-header .sub {
+  margin-top: 10px;
+  font-size: .82rem; color: rgba(246,245,241,.42); font-weight: 300;
+}
+
+.doc-nav {
+  background: var(--off);
+  border-bottom: 1px solid var(--rule);
+  padding: 0 60px;
+  display: flex; gap: 0; overflow-x: auto;
+  position: sticky; top: 0; z-index: 100;
+}
+.doc-nav a {
+  display: block; padding: 14px 18px;
+  font-size: .62rem; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mid); text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.doc-nav a:hover { color: var(--black); border-bottom-color: var(--black); }
+
+.doc-body { max-width: 1100px; margin: 0 auto; padding: 0 60px 100px; }
+
+/* ── SECTIONS ───────────────────────────────── */
+.ds-section {
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--rule);
+}
+.ds-section:last-child { border-bottom: none; }
+.ds-eyebrow {
+  font-size: .58rem; font-weight: 600;
+  letter-spacing: .36em; text-transform: uppercase;
+  color: var(--mid); margin-bottom: 6px;
+}
+.ds-section h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem; font-weight: 300;
+  letter-spacing: -.02em; color: var(--ink);
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+.ds-section h2 strong { font-weight: 600; }
+.token-note {
+  font-size: .78rem; color: var(--mid);
+  line-height: 1.7; margin-bottom: 36px;
+  max-width: 680px;
+}
+code {
+  font-family: 'Courier New', monospace;
+  font-size: .78rem;
+  background: var(--off);
+  border: 1px solid var(--rule);
+  padding: 2px 7px;
+  color: var(--ink);
+}
+
+/* ── COLOR ──────────────────────────────────── */
+.swatch-row { display: flex; gap: 2px; flex-wrap: wrap; margin-bottom: 36px; }
+.swatch { display: flex; flex-direction: column; min-width: 155px; flex: 1; }
+.swatch-chip { height: 80px; border: 1px solid rgba(0,0,0,.06); }
+.swatch-info {
+  background: var(--off);
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  border-top: none;
+}
+.swatch-name {
+  font-size: .68rem; font-weight: 600; letter-spacing: .06em;
+  color: var(--ink); display: block; margin-bottom: 2px;
+}
+.swatch-token {
+  font-family: 'Courier New', monospace;
+  font-size: .68rem; color: var(--mid); display: block; margin-bottom: 2px;
+}
+.swatch-hex {
+  font-family: 'Courier New', monospace;
+  font-size: .68rem; color: var(--mid); display: block;
+}
+.swatch-use {
+  font-size: .68rem; color: var(--mid);
+  margin-top: 4px; display: block; line-height: 1.4;
+}
+
+/* ── TABLE ──────────────────────────────────── */
+.usage-table {
+  width: 100%; border-collapse: collapse;
+  font-size: .82rem; margin-bottom: 32px;
+}
+.usage-table th {
+  text-align: left; padding: 10px 16px;
+  background: var(--off);
+  font-size: .6rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--mid); border: 1px solid var(--rule);
+}
+.usage-table td {
+  padding: 12px 16px;
+  border: 1px solid var(--rule);
+  color: var(--ink); vertical-align: top; line-height: 1.6;
+}
+.usage-table td:first-child {
+  font-family: 'Courier New', monospace;
+  font-size: .75rem; color: var(--ink);
+  white-space: nowrap; width: 200px;
+}
+.usage-table tr:nth-child(even) td { background: var(--off); }
+
+/* ── TYPE SPECIMENS ─────────────────────────── */
+.type-specimen {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 40px 44px;
+  margin-bottom: 2px;
+}
+.type-meta {
+  font-size: .6rem; font-weight: 600;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--mid); margin-bottom: 14px;
+}
+.type-note {
+  font-size: .68rem; color: var(--mid);
+  margin-top: 12px; line-height: 1.5;
+}
+
+/* ── SPACING ────────────────────────────────── */
+.space-row {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  margin-bottom: 36px; align-items: flex-end;
+}
+.space-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.space-bar { background: var(--mid); width: 40px; }
+.space-val { font-size: .65rem; font-weight: 600; color: var(--ink); }
+.space-label { font-size: .6rem; color: var(--mid); text-align: center; }
+
+/* ── BUTTONS ────────────────────────────────── */
+.demo-block { padding: 40px; }
+.demo-label {
+  font-size: .6rem; font-weight: 600;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--mid); margin-bottom: 16px;
+}
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.btn {
+  font-family: 'Outfit', sans-serif;
+  font-size: .78rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  padding: 18px 44px; text-decoration: none;
+  display: inline-block; border-radius: 0;
+  transition: opacity .3s, transform .2s;
+  border: 1px solid transparent;
+}
+.btn:hover { opacity: .7; transform: translateY(-1px); }
+.btn-dark   { background: var(--black); color: var(--white); }
+.btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-white  { background: var(--white); color: var(--black); }
+.btn-outline-white { background: transparent; color: var(--white); border-color: var(--white); }
+
+/* ── SECTION PATTERNS ───────────────────────── */
+.section-pattern {
+  padding: 24px 36px;
+  font-size: .72rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.grid-demo { display: flex; gap: 2px; margin-bottom: 2px; }
+.grid-cell {
+  flex: 1; padding: 32px 28px;
+  background: var(--off); border: 1px solid var(--rule);
+  font-size: .78rem; color: var(--mid);
+  font-style: italic;
+}
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+
+/* ── COMPONENT DEMOS ────────────────────────── */
+.praise-demo {
+  background: var(--off);
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 0; margin-bottom: 32px;
+}
+.praise-card {
+  padding: 40px 36px;
+  border-right: 1px solid var(--rule);
+}
+.praise-card:last-child { border-right: none; }
+.praise-quote {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem; font-style: italic;
+  line-height: 1.65; color: var(--ink); margin-bottom: 20px;
+}
+.praise-attr {
+  font-size: .65rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--mid);
+}
+
+.pullquote-demo {
+  background: var(--off);
+  padding: 48px 56px;
+  margin-bottom: 32px;
+}
+.pullquote-demo p {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.5rem,2.4vw,2.2rem);
+  font-style: italic; line-height: 1.3;
+  color: var(--black); letter-spacing: -0.01em;
+  border-left: 3px solid var(--black);
+  padding-left: 36px; margin: 0;
+}
+
+.arch-demo {
+  background: var(--off);
+  padding: 44px 52px;
+  display: grid; grid-template-columns: 200px 1fr auto;
+  gap: 0 52px; align-items: center;
+  margin-bottom: 32px;
+}
+.arch-type {
+  font-size: .65rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--mid); line-height: 1.6;
+}
+.arch-text {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem; font-style: italic;
+  line-height: 1.65; color: var(--ink); margin: 0;
+}
+.arch-link {
+  font-size: .75rem; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--black); text-decoration: none;
+  border-bottom: 1px solid var(--black);
+  padding-bottom: 2px; white-space: nowrap;
+}
+
+.stat-demo {
+  background: var(--black); padding: 40px 48px;
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 2px; margin-bottom: 32px;
+}
+.stat-cell {
+  padding: 28px 24px;
+  background: var(--black);
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-n {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(2rem,3vw,2.8rem);
+  font-weight: 400; color: var(--white);
+  line-height: 1; display: block; margin-bottom: 12px;
+}
+.stat-l {
+  font-size: .78rem; color: rgba(246,245,241,.5);
+  line-height: 1.5; display: block;
+}
+
+.context-strip-demo {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 0; border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 32px;
+}
+.ctx-cell {
+  padding: 28px 24px 28px 0;
+  border-right: 1px solid var(--rule);
+  padding-right: 32px;
+}
+.ctx-cell:first-child { padding-left: 0; }
+.ctx-cell:last-child { border-right: none; }
+.ctx-label {
+  font-size: .5rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--mid); display: block; margin-bottom: 10px;
+}
+.ctx-value {
+  font-size: .88rem; line-height: 1.5;
+}
+
+.proj-card-demo {
+  position: relative; height: 280px; overflow: hidden; display: block;
+  text-decoration: none;
+}
+.proj-card-bg {
+  position: absolute; inset: 0;
+  background: #c8c4bc;
+  filter: grayscale(60%) brightness(0.55);
+}
+.proj-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(13,13,11,.92) 0%, rgba(13,13,11,.25) 100%);
+  z-index: 1;
+}
+.proj-card-content {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+  padding: 32px;
+}
+.proj-tag {
+  font-size: .65rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(246,245,241,.5); display: block; margin-bottom: 10px;
+}
+.proj-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.5rem; font-weight: 400;
+  line-height: 1.2; color: var(--white); display: block;
+}
+
+.cta-demo {
+  padding: 64px 48px; text-align: center;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 32px;
+}
+.cta-demo h3 {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.5rem,2.5vw,2.1rem);
+  font-weight: 400; line-height: 1.2;
+  letter-spacing: -.015em;
+  max-width: 500px; margin: 0 auto 28px; color: var(--black);
+}
+
+.footer-demo {
+  background: var(--black); margin-bottom: 32px;
+}
+.footer-top {
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  padding: 28px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-brand {
+  font-size: .65rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--white);
+}
+.footer-avail {
+  font-size: .62rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+  border: 1px solid rgba(255,255,255,.2); padding: 7px 14px;
+}
+.footer-tiles {
+  display: grid; grid-template-columns: repeat(4,1fr);
+}
+.footer-tile {
+  padding: 36px 32px;
+  border-right: 1px solid rgba(255,255,255,.08);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.footer-tile:last-child { border-right: none; }
+.tile-verb {
+  font-size: .6rem; font-weight: 500;
+  letter-spacing: .28em; text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+}
+.tile-lbl {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.3rem; font-weight: 400; color: var(--white);
+}
+.tile-det { font-size: .72rem; color: rgba(255,255,255,.4); line-height: 1.5; }
+.tile-act {
+  font-size: .62rem; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--white); margin-top: 8px;
+  padding-top: 12px; border-top: 1px solid rgba(255,255,255,.1);
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 16px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-bottom span {
+  font-size: .62rem; letter-spacing: .14em;
+  text-transform: uppercase; color: rgba(255,255,255,.2);
+}
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="label">Design System Reference · v3</div>
+  <h1>Cara A. Brown, MBA — <strong>Visual Identity</strong></h1>
+  <p class="sub">caraabrown.com · Elementor + WordPress · EB Garamond + Outfit · Updated 2025</p>
+</header>
+
+<nav class="doc-nav">
+  <a href="#color">01 · Color</a>
+  <a href="#type">02 · Typography</a>
+  <a href="#spacing">03 · Spacing</a>
+  <a href="#buttons">04 · Buttons</a>
+  <a href="#components">05 · Components</a>
+  <a href="#sections">06 · Section Patterns</a>
+  <a href="#carousels">07 · Carousels</a>
+  <a href="#iconography">08 · Iconography</a>
+  <a href="#rules">09 · Rules</a>
+</nav>
+
+<div class="doc-body">
+
+<!-- COLOR -->
+<section class="ds-section" id="color">
+  <div class="ds-eyebrow">01 · Color</div>
+  <h2><strong>Color</strong> Tokens</h2>
+  <p class="token-note">Six tokens cover the entire system. No deviations. <code>--black</code> and <code>--white</code> are warm near-neutrals — never pure #000 or #fff. The only "accent" is structural: <code>--mid</code> for secondary text and muted UI. No teal, gold, purple, red, or any hue.</p>
+
+  <div class="swatch-row">
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#0d0d0b;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Black</span>
+        <span class="swatch-token">--black</span>
+        <span class="swatch-hex">#0d0d0b</span>
+        <span class="swatch-use">Backgrounds (dark), primary text, buttons, nav (scrolled)</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#f6f5f1; border:1px solid #dddad3;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">White</span>
+        <span class="swatch-token">--white</span>
+        <span class="swatch-hex">#f6f5f1</span>
+        <span class="swatch-use">Primary section background, button text on dark</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#efede8;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Off-white</span>
+        <span class="swatch-token">--off</span>
+        <span class="swatch-hex">#efede8</span>
+        <span class="swatch-use">Alternating sections, praise strip, arch strip, table rows</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#888680;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Mid</span>
+        <span class="swatch-token">--mid</span>
+        <span class="swatch-hex">#888680</span>
+        <span class="swatch-use">Eyebrows, captions, secondary labels, metadata</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#dddad3;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Rule</span>
+        <span class="swatch-token">--rule</span>
+        <span class="swatch-hex">#dddad3</span>
+        <span class="swatch-use">Dividers, borders, table rules, grid gaps</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#1e1e1c;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Ink</span>
+        <span class="swatch-token">--ink</span>
+        <span class="swatch-hex">#1e1e1c</span>
+        <span class="swatch-use">Body text on light backgrounds</span>
+      </div>
+    </div>
+  </div>
+
+  <table class="usage-table">
+    <thead><tr><th>Token</th><th>Never use for</th></tr></thead>
+    <tbody>
+      <tr><td>--black</td><td>Pure black replacements — this is warm-dark, not neutral</td></tr>
+      <tr><td>--white</td><td>Document backgrounds in print — use #ffffff there only</td></tr>
+      <tr><td>--rule</td><td>Text, buttons, or anything requiring contrast</td></tr>
+      <tr><td>Any unlisted color</td><td>Do not introduce any new colors without direction</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section class="ds-section" id="type">
+  <div class="ds-eyebrow">02 · Typography</div>
+  <h2><strong>Type</strong> System</h2>
+  <p class="token-note">Two fonts only: <strong>EB Garamond</strong> (display, headings, pull quotes, stat numbers — never uppercase, never h2/h3 in all-caps) and <strong>Outfit</strong> (body, eyebrows, buttons, labels, captions — the only font used uppercase). No third font is ever introduced.</p>
+
+  <div class="type-specimen">
+    <div class="type-meta">H1 · EB Garamond 400 · clamp(2.4rem, 5vw, 4.2rem) · tracking –0.02em</div>
+    <div style="font-family:'EB Garamond',serif; font-size:clamp(2.4rem,5vw,4.2rem); font-weight:400; letter-spacing:-0.02em; line-height:1.1; color:var(--black);">Enterprise Strategy at Scale</div>
+    <div class="type-note">Used for: page H1s, hero headlines</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">H1 Italic · EB Garamond 400 italic · clamp(2.4rem, 5vw, 4.2rem)</div>
+    <div style="font-family:'EB Garamond',serif; font-size:clamp(2.4rem,5vw,4.2rem); font-weight:400; font-style:italic; letter-spacing:-0.02em; line-height:1.1; color:var(--mid);">The work behind the work.</div>
+    <div class="type-note">Used for: italic H1 variants, hero subtitles. Class: <code>.garamond-italic</code></div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">H2 · EB Garamond 400 · clamp(1.8rem, 3vw, 2.8rem) · tracking –0.02em</div>
+    <div style="font-family:'EB Garamond',serif; font-size:clamp(1.8rem,3vw,2.8rem); font-weight:400; letter-spacing:-0.02em; line-height:1.1; color:var(--black);">How I Led the Transformation</div>
+    <div class="type-note">Never uppercase. Never Outfit on section H2s.</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">H3 · EB Garamond 400 · clamp(1.3rem, 2vw, 1.75rem)</div>
+    <div style="font-family:'EB Garamond',serif; font-size:clamp(1.3rem,2vw,1.75rem); font-weight:400; letter-spacing:-0.01em; line-height:1.2; color:var(--black);">Service Architecture & System Design</div>
+    <div class="type-note">Never uppercase. EB Garamond only.</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">Pull Quote · EB Garamond 500 italic · clamp(2rem, 3.2vw, 3rem)</div>
+    <div style="font-family:'EB Garamond',serif; font-size:clamp(2rem,3.2vw,3rem); font-style:italic; font-weight:500; line-height:1.2; color:var(--black); border-left:3px solid var(--black); padding-left:36px;">The system had never had a strategy. We built one in twelve weeks.</div>
+    <div class="type-note">Border-left: 3px solid --black. Always italic. Component 2 in library.</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">Body · Outfit 300 · 1rem · line-height 1.8</div>
+    <div style="font-family:'Outfit',sans-serif; font-size:1rem; font-weight:300; line-height:1.8; color:var(--ink);">Enterprise service design at this scale requires more than research fluency — it requires the ability to hold organizational complexity, broker across competing stakeholders, and translate ambiguity into systems that can actually be implemented. That is the work I do.</div>
+    <div class="type-note">Default body weight is 300 (light). Never bold body text without reason.</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">Eyebrow · Outfit 500 · 9px · tracking 0.28em · uppercase</div>
+    <div style="font-family:'Outfit',sans-serif; font-size:9px; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:var(--mid);">How I Worked · Kroger · 2022–2025</div>
+    <div class="type-note">The only uppercase text pattern. Outfit only. Never EB Garamond uppercase.</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">Caption / Meta · Outfit 400 · 0.8125rem · --mid</div>
+    <div style="font-family:'Outfit',sans-serif; font-size:0.8125rem; font-weight:400; color:var(--mid); line-height:1.6;">Image caption or supporting note goes here. Used beneath photos, images, and artifact descriptions.</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">Button / Link Label · Outfit 500 · 0.78rem · tracking 0.2em · uppercase</div>
+    <div style="font-family:'Outfit',sans-serif; font-size:0.78rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--black);">Get in Touch · View Portfolio · Schedule a Call →</div>
+  </div>
+
+  <table class="usage-table" style="margin-top:32px;">
+    <thead><tr><th>Font</th><th>Weights used</th><th>Elements</th><th>Never use for</th></tr></thead>
+    <tbody>
+      <tr><td>EB Garamond</td><td>400, 400 italic, 500, 500 italic</td><td>H1, H2, H3, pull quotes, stat numbers, tile labels</td><td>Uppercase text, eyebrows, buttons, captions</td></tr>
+      <tr><td>Outfit</td><td>300, 400, 500, 600</td><td>Body, eyebrows, buttons, nav, captions, labels</td><td>Section H2 or H3 headings</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SPACING -->
+<section class="ds-section" id="spacing">
+  <div class="ds-eyebrow">03 · Spacing</div>
+  <h2><strong>Space</strong> Scale</h2>
+  <p class="token-note">Spacing is generous. Sections breathe. Grid gaps are always 2px using <code>gap: 2px</code> with <code>background: var(--rule)</code> on the grid parent — not margin, not padding.</p>
+
+  <div class="space-row">
+    <div class="space-item"><div class="space-bar" style="height:4px;"></div><span class="space-val">2px</span><span class="space-label">Grid gap</span></div>
+    <div class="space-item"><div class="space-bar" style="height:8px;"></div><span class="space-val">8–12px</span><span class="space-label">Label gap</span></div>
+    <div class="space-item"><div class="space-bar" style="height:16px;"></div><span class="space-val">18–24px</span><span class="space-label">Inline pad</span></div>
+    <div class="space-item"><div class="space-bar" style="height:24px;"></div><span class="space-val">36–44px</span><span class="space-label">Card pad</span></div>
+    <div class="space-item"><div class="space-bar" style="height:40px;"></div><span class="space-val">52–60px</span><span class="space-label">Container H</span></div>
+    <div class="space-item"><div class="space-bar" style="height:60px;"></div><span class="space-val">80px</span><span class="space-label">Col gap</span></div>
+    <div class="space-item"><div class="space-bar" style="height:80px;"></div><span class="space-val">80px</span><span class="space-label">Section top</span></div>
+    <div class="space-item"><div class="space-bar" style="height:100px;"></div><span class="space-val">110px</span><span class="space-label">Full section</span></div>
+  </div>
+
+  <table class="usage-table">
+    <thead><tr><th>Context</th><th>Value</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>grid-gap</td><td>2px</td><td>Between all grid cells — creates hairline rule effect via --rule background on parent</td></tr>
+      <tr><td>container-pad</td><td>0 60px → 0 24px</td><td>Horizontal padding; 60px desktop, 24px mobile</td></tr>
+      <tr><td>section-pad</td><td>80–110px 0</td><td>Top/bottom padding on major sections</td></tr>
+      <tr><td>card-interior</td><td>40–52px</td><td>Praise cards, context cells, arch strip</td></tr>
+      <tr><td>column-gap</td><td>80px</td><td>Gap between 2-col grid columns</td></tr>
+      <tr><td>eyebrow margin</td><td>6–10px</td><td>Space below eyebrow before heading</td></tr>
+      <tr><td>pull-quote indent</td><td>36px left padding</td><td>Paired with 3px left border</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- BUTTONS -->
+<section class="ds-section" id="buttons">
+  <div class="ds-eyebrow">04 · Interaction</div>
+  <h2><strong>Buttons</strong> &amp; Links</h2>
+  <p class="token-note">Buttons are always sharp-cornered (border-radius: 0). No rounded corners anywhere in this system. Hover state is always <code>opacity: 0.7</code> + <code>translateY(-1px)</code> — never a color change or background-flash.</p>
+
+  <div class="demo-block" style="background:var(--white); border:1px solid var(--rule);">
+    <div class="demo-label">On Light Background</div>
+    <div class="btn-row">
+      <a class="btn btn-dark" href="#">Get in Touch</a>
+      <a class="btn btn-outline" href="#">Schedule a Call</a>
+    </div>
+  </div>
+  <div class="demo-block" style="background:var(--black); margin-top:2px;">
+    <div class="demo-label" style="color:rgba(246,245,241,.35);">On Dark Background</div>
+    <div class="btn-row">
+      <a class="btn btn-white" href="#">Get in Touch</a>
+      <a class="btn btn-outline-white" href="#">Schedule a Call</a>
+    </div>
+  </div>
+
+  <table class="usage-table" style="margin-top:32px;">
+    <thead><tr><th>Variant</th><th>Background</th><th>Text</th><th>When</th></tr></thead>
+    <tbody>
+      <tr><td>.btn-dark</td><td>--black</td><td>--white</td><td>Primary CTA on light/off sections</td></tr>
+      <tr><td>.btn-outline</td><td>transparent</td><td>--ink + border --ink</td><td>Secondary CTA on light sections</td></tr>
+      <tr><td>.btn-white</td><td>--white</td><td>--black</td><td>Primary CTA on dark sections</td></tr>
+      <tr><td>.btn-outline-white</td><td>transparent</td><td>--white + border --white</td><td>Secondary CTA on dark sections</td></tr>
+    </tbody>
+  </table>
+
+  <p class="token-note" style="margin-top:16px;">Inline text links use <code>border-bottom: 1px solid var(--black)</code> with <code>opacity: 0.6</code> on hover. Never underline via <code>text-decoration</code>.</p>
+</section>
+
+<!-- COMPONENTS -->
+<section class="ds-section" id="components">
+  <div class="ds-eyebrow">05 · Components</div>
+  <h2><strong>Core</strong> Components</h2>
+
+  <!-- Component 1 -->
+  <div class="demo-label" style="margin-bottom:16px;">Component 1 — Praise Strip (3-col, --off background)</div>
+  <div class="praise-demo">
+    <div class="praise-card">
+      <p class="praise-quote">"Quote text goes here — keep it to two or three lines maximum."</p>
+      <span class="praise-attr">Name · Title, Organization</span>
+    </div>
+    <div class="praise-card">
+      <p class="praise-quote">"Quote text goes here — keep it to two or three lines maximum."</p>
+      <span class="praise-attr">Name · Title, Organization</span>
+    </div>
+    <div class="praise-card">
+      <p class="praise-quote">"Quote text goes here — keep it to two or three lines maximum."</p>
+      <span class="praise-attr">Name · Title, Organization</span>
+    </div>
+  </div>
+
+  <!-- Component 2 -->
+  <div class="demo-label" style="margin-bottom:16px;">Component 2 — Pull Quote / Callout (content width, not full bleed)</div>
+  <div class="pullquote-demo">
+    <p>The system had never had a strategy. We built one in twelve weeks.</p>
+  </div>
+
+  <!-- Component 3 Context Strip -->
+  <div class="demo-label" style="margin-bottom:16px;">Component 3 — Context Strip (4-col metadata, top of case study)</div>
+  <div class="context-strip-demo">
+    <div class="ctx-cell"><span class="ctx-label">Client</span><span class="ctx-value">Kroger</span></div>
+    <div class="ctx-cell" style="padding-left:32px;"><span class="ctx-label">Engagement</span><span class="ctx-value">Enterprise Transportation Strategy</span></div>
+    <div class="ctx-cell" style="padding-left:32px;"><span class="ctx-label">Duration</span><span class="ctx-value">2022–2025</span></div>
+    <div class="ctx-cell" style="padding-left:32px;"><span class="ctx-label">My Role</span><span class="ctx-value">Senior Service Designer</span></div>
+  </div>
+
+  <!-- Component 4 Stat Block -->
+  <div class="demo-label" style="margin-bottom:16px;">Component 4 — Stat Block (dark background, 4-col)</div>
+  <div class="stat-demo">
+    <div class="stat-cell"><span class="stat-n">$270M</span><span class="stat-l">Weekly enterprise exposure quantified and resolved</span></div>
+    <div class="stat-cell"><span class="stat-n">+100pt</span><span class="stat-l">NPS swing from −36 to +49 at enterprise scale</span></div>
+    <div class="stat-cell"><span class="stat-n">97.5%</span><span class="stat-l">Reduction in employee theft across 20K workforce</span></div>
+    <div class="stat-cell"><span class="stat-n">$500K</span><span class="stat-l">Competitive grant secured via impact methodology</span></div>
+  </div>
+
+  <!-- Component 5 Arch Strip -->
+  <div class="demo-label" style="margin-bottom:16px;">Component 5 — Service Architecture Strip (3-col, --off background)</div>
+  <div class="arch-demo">
+    <span class="arch-type">Service Architecture — Clarity</span>
+    <p class="arch-text">2–3 sentence description of the architecture type and what made this project distinctive. Keep it short — this is a closing thought, not a summary.</p>
+    <a class="arch-link" href="#">How I Work →</a>
+  </div>
+
+  <!-- Component 6 Project Card -->
+  <div class="demo-label" style="margin-bottom:16px;">Component 6 — Project Card (More Work section, photo-based)</div>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:32px;">
+    <div class="proj-card-demo">
+      <div class="proj-card-bg"></div>
+      <div class="proj-card-overlay"></div>
+      <div class="proj-card-content">
+        <span class="proj-tag">GardaWorld · Culture Integration</span>
+        <span class="proj-title">Employee Theft Dropped from 20% to 0.5%</span>
+      </div>
+    </div>
+    <div class="proj-card-demo">
+      <div class="proj-card-bg" style="background:#b8b4ac;"></div>
+      <div class="proj-card-overlay"></div>
+      <div class="proj-card-content">
+        <span class="proj-tag">EOYDC · Research + Impact</span>
+        <span class="proj-title">Mapping Success</span>
+      </div>
+    </div>
+    <div class="proj-card-demo">
+      <div class="proj-card-bg" style="background:#a8a49c;"></div>
+      <div class="proj-card-overlay"></div>
+      <div class="proj-card-content">
+        <span class="proj-tag">Kroger · Transportation Strategy</span>
+        <span class="proj-title">The First Strategy a $24M Function Ever Had</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Component 7 CTA -->
+  <div class="demo-label" style="margin-bottom:16px;">Component 7 — Centered CTA (above More Work)</div>
+  <div class="cta-demo">
+    <h3>Ready to work on something that matters?</h3>
+    <a class="btn btn-dark" href="#">Get in touch</a>
+  </div>
+
+  <!-- Component 8 Footer -->
+  <div class="demo-label" style="margin-bottom:16px;">Component 8 — Footer (dark, 4-tile action grid)</div>
+  <div class="footer-demo">
+    <div class="footer-top">
+      <span class="footer-brand">Cara A. Brown, MBA · Design Strategist · Service Designer</span>
+      <span class="footer-avail">Available for engagements</span>
+    </div>
+    <div class="footer-tiles">
+      <div class="footer-tile">
+        <span class="tile-verb">Connect</span>
+        <span class="tile-lbl">View my LinkedIn</span>
+        <span class="tile-det">Work history, recommendations, full profile.</span>
+        <span class="tile-act">Go to LinkedIn →</span>
+      </div>
+      <div class="footer-tile">
+        <span class="tile-verb">Talk</span>
+        <span class="tile-lbl">Schedule a Call</span>
+        <span class="tile-det">Let's talk about what you're working on.</span>
+        <span class="tile-act">Book a time →</span>
+      </div>
+      <div class="footer-tile">
+        <span class="tile-verb">Hire</span>
+        <span class="tile-lbl">Send a Job Description</span>
+        <span class="tile-det">Email me a JD and I'll tell you if it's a fit.</span>
+        <span class="tile-act">Send the JD →</span>
+      </div>
+      <div class="footer-tile">
+        <span class="tile-verb">Ask</span>
+        <span class="tile-lbl">Ask Me Anything</span>
+        <span class="tile-det">Process, consulting, or engagements.</span>
+        <span class="tile-act">Get in touch →</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Cara A. Brown, MBA</span>
+      <span>Portfolio · About · How I Work · Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION PATTERNS -->
+<section class="ds-section" id="sections">
+  <div class="ds-eyebrow">06 · Layout</div>
+  <h2><strong>Section</strong> Patterns</h2>
+  <p class="token-note">Sections alternate between warm white and off-white for light rhythm. The dark section (<code>--black</code>) is used sparingly for high-impact moments: stats, footers, dark hero variants. Never stack two dark sections back to back.</p>
+
+  <div class="section-pattern" style="background:#f6f5f1; color:#888680; border:1px solid #dddad3;">--white · #f6f5f1 · Primary section background</div>
+  <div class="section-pattern" style="background:#efede8; color:#888680; margin-top:2px;">--off · #efede8 · Alternating sections, praise strip, arch strip, table rows</div>
+  <div class="section-pattern" style="background:#0d0d0b; color:rgba(246,245,241,.42); margin-top:2px;">--black · #0d0d0b · Stats, footer, dark hero, nav (scrolled)</div>
+
+  <div style="margin-top:40px;">
+    <div class="demo-label" style="margin-bottom:16px;">Two-column layout (gap: 2px, background: --rule on parent)</div>
+    <div class="grid-demo">
+      <div class="grid-cell">Column A — Lead / intro / headline text area</div>
+      <div class="grid-cell">Column B — Body copy, accordion, supporting content</div>
+    </div>
+
+    <div class="demo-label" style="margin-bottom:16px; margin-top:32px;">Three-column layout (gap: 2px on parent)</div>
+    <div class="grid-3">
+      <div class="grid-cell">Card · Praise · Project 01</div>
+      <div class="grid-cell">Card · Praise · Project 02</div>
+      <div class="grid-cell">Card · Praise · Project 03</div>
+    </div>
+
+    <div class="demo-label" style="margin-bottom:16px; margin-top:32px;">Four-column layout (footer tiles, context strip)</div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:2px;">
+      <div class="grid-cell">Col 01</div>
+      <div class="grid-cell">Col 02</div>
+      <div class="grid-cell">Col 03</div>
+      <div class="grid-cell">Col 04</div>
+    </div>
+  </div>
+</section>
+
+<!-- CAROUSELS -->
+<section class="ds-section" id="carousels">
+  <div class="ds-eyebrow">07 · Carousels</div>
+  <h2><strong>Image</strong> Carousels</h2>
+  <p class="token-note">Two carousel patterns exist in the system. Both use the same visual language: dark translucent arrow buttons, Outfit counter label, touch/swipe support, and <code>cubic-bezier(0.16,1,0.3,1)</code> slide transition. Never use third-party sliders (Swiper, Slick, etc.) for custom HTML widget carousels.</p>
+
+  <style>
+  /* ── VARIANT A: Field Carousel (full-bleed, single slide, IDs-based) ── */
+  .ds-carousel-a { position:relative; width:100%; overflow:hidden; background:var(--off); }
+  .ds-carousel-a .ca-track-wrap { overflow:hidden; width:100%; }
+  .ds-carousel-a .ca-track {
+    display:flex;
+    transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    will-change:transform;
+  }
+  .ds-carousel-a .ca-slide { flex:0 0 100%; width:100%; line-height:0; }
+  .ds-carousel-a .ca-slide .ca-placeholder {
+    width:100%; height:320px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Outfit',sans-serif; font-size:.72rem;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--mid);
+  }
+  .ds-carousel-a .ca-nav {
+    position:absolute; top:50%; transform:translateY(-50%);
+    display:flex; justify-content:space-between;
+    width:100%; padding:0 20px;
+    pointer-events:none; z-index:10;
+  }
+  .ca-btn {
+    pointer-events:all;
+    background:rgba(13,13,11,.55);
+    border:1px solid rgba(246,245,241,.2);
+    color:#f6f5f1;
+    font-family:'Outfit',sans-serif; font-size:1rem;
+    width:44px; height:44px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .2s;
+  }
+  .ca-btn:hover { background:rgba(13,13,11,.85); }
+  .ca-btn:disabled { opacity:.3; cursor:default; }
+  .ca-counter {
+    position:absolute; bottom:16px; right:20px;
+    font-family:'Outfit',sans-serif; font-size:9px; font-weight:500;
+    letter-spacing:.18em; color:rgba(246,245,241,.6); z-index:10;
+  }
+  .ca-caption {
+    padding:28px 48px 40px;
+    font-size:.8125rem; color:var(--mid); line-height:1.6;
+  }
+
+  /* ── VARIANT B: Component Carousel (data-attr, dots nav) ── */
+  .ds-carousel-b { position:relative; width:100%; overflow:hidden; background:var(--off); }
+  .ds-carousel-b .cb-track-wrap { overflow:hidden; width:100%; }
+  .ds-carousel-b .cb-track {
+    display:flex;
+    transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    will-change:transform;
+  }
+  .ds-carousel-b .cb-slide { flex:0 0 100%; width:100%; line-height:0; }
+  .ds-carousel-b .cb-slide .cb-placeholder {
+    width:100%; height:320px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Outfit',sans-serif; font-size:.72rem;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--mid);
+  }
+  .ds-carousel-b .cb-nav {
+    position:absolute; top:50%; transform:translateY(-50%);
+    display:flex; justify-content:space-between;
+    width:100%; padding:0 20px;
+    pointer-events:none; z-index:10;
+  }
+  .ds-carousel-b .cb-counter {
+    position:absolute; bottom:48px; right:20px;
+    font-family:'Outfit',sans-serif; font-size:9px; font-weight:500;
+    letter-spacing:.18em; color:rgba(246,245,241,.6); z-index:10;
+  }
+  .ds-carousel-b .cb-dots-bar {
+    display:flex; align-items:center; justify-content:center;
+    gap:8px; padding:16px 20px;
+    border-top:1px solid var(--rule);
+  }
+  .cb-dot-demo {
+    width:6px; height:6px;
+    background:var(--rule); border:none; cursor:pointer; padding:0;
+    transition:background .2s, transform .2s;
+  }
+  .cb-dot-demo[aria-current="true"] {
+    background:var(--black); transform:scale(1.3);
+  }
+  </style>
+
+  <!-- VARIANT A -->
+  <div class="demo-label" style="margin-bottom:16px;">Variant A — Field Carousel (full-bleed, IDs, no dots)</div>
+  <p class="token-note" style="margin-bottom:20px;">Use when images are the primary content — field photos, process documentation, artifacts. ID-based JS. One carousel per page with this pattern. Caption sits below outside the carousel wrapper.</p>
+
+  <div class="ds-carousel-a" id="demoCarouselA">
+    <div class="ca-track-wrap">
+      <div class="ca-track" id="demoTrackA">
+        <div class="ca-slide"><div class="ca-placeholder" style="background:#e0ddd7;">Slide 1 — Field Photo</div></div>
+        <div class="ca-slide"><div class="ca-placeholder" style="background:#d8d5cf;">Slide 2 — Field Photo</div></div>
+        <div class="ca-slide"><div class="ca-placeholder" style="background:#d0cdc7;">Slide 3 — Field Photo</div></div>
+      </div>
+    </div>
+    <div class="ca-nav">
+      <button class="ca-btn" id="demoPrevA" aria-label="Previous" disabled>←</button>
+      <button class="ca-btn" id="demoNextA" aria-label="Next">→</button>
+    </div>
+    <span class="ca-counter" id="demoCountA">1 / 3</span>
+  </div>
+  <p class="ca-caption">Caption text sits below the carousel, outside the wrapper. Outfit 300, 0.8125rem, --mid. Max-width matches content column.</p>
+
+  <table class="usage-table" style="margin-top:24px; margin-bottom:48px;">
+    <thead><tr><th>Element</th><th>Class / ID</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Wrapper</td><td><code>.cb-field-carousel</code> + unique ID</td><td>position:relative, overflow:hidden</td></tr>
+      <tr><td>Track wrap</td><td><code>.cb-field-track-wrap</code></td><td>overflow:hidden, width:100%</td></tr>
+      <tr><td>Track</td><td><code>.cb-field-track</code> + unique ID</td><td>display:flex — JS moves this with translateX</td></tr>
+      <tr><td>Slide</td><td><code>.cb-field-slide</code></td><td>flex: 0 0 100%. Image: width:100%, max-height:80vh, object-fit:cover</td></tr>
+      <tr><td>Prev/Next buttons</td><td><code>.cb-field-btn</code> + unique IDs</td><td>44×44px, dark translucent. disabled attr controls opacity</td></tr>
+      <tr><td>Counter</td><td><code>.cb-field-counter</code> + unique ID</td><td>Outfit 9px 500. Bottom-right, overlaid on image</td></tr>
+      <tr><td>Caption</td><td><code>.cb-field-caption</code></td><td>Outside carousel wrapper. 0.8125rem, --mid</td></tr>
+    </tbody>
+  </table>
+
+  <!-- VARIANT B -->
+  <div class="demo-label" style="margin-bottom:16px;">Variant B — Component Carousel (data-attributes, dots + counter)</div>
+  <p class="token-note" style="margin-bottom:20px;">Use when multiple carousels may appear on the same page. Fully driven by <code>data-cb-*</code> attributes — no IDs required. JS auto-generates dot buttons into <code>[data-cb-dots]</code> container.</p>
+
+  <div class="ds-carousel-b" data-cb-carousel-demo>
+    <div class="cb-track-wrap">
+      <div class="cb-track" id="demoTrackB">
+        <div class="cb-slide"><div class="cb-placeholder" style="background:#e0ddd7;">Slide 1</div></div>
+        <div class="cb-slide"><div class="cb-placeholder" style="background:#d8d5cf;">Slide 2</div></div>
+        <div class="cb-slide"><div class="cb-placeholder" style="background:#d0cdc7;">Slide 3</div></div>
+        <div class="cb-slide"><div class="cb-placeholder" style="background:#c8c5bf;">Slide 4</div></div>
+      </div>
+    </div>
+    <div class="cb-nav">
+      <button class="ca-btn" id="demoPrevB" aria-label="Previous" disabled>←</button>
+      <button class="ca-btn" id="demoNextB" aria-label="Next">→</button>
+    </div>
+    <span class="cb-counter" id="demoCountB">1 / 4</span>
+    <div class="cb-dots-bar" id="demoDotsB"></div>
+  </div>
+
+  <table class="usage-table" style="margin-top:24px; margin-bottom:48px;">
+    <thead><tr><th>Attribute</th><th>Applied to</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><code>data-cb-carousel</code></td><td>Outermost wrapper div</td><td>JS selector — triggers the component. No ID needed.</td></tr>
+      <tr><td><code>data-cb-track</code></td><td>Inner track div</td><td>JS moves this with translateX. display:flex.</td></tr>
+      <tr><td><code>data-cb-slide</code></td><td>Each slide div</td><td>flex: 0 0 100%. Contains image or content.</td></tr>
+      <tr><td><code>data-cb-prev</code></td><td>Previous button</td><td>JS attaches click handler and disables at first slide.</td></tr>
+      <tr><td><code>data-cb-next</code></td><td>Next button</td><td>JS attaches click handler and disables at last slide.</td></tr>
+      <tr><td><code>data-cb-dots</code></td><td>Dots container div</td><td>JS auto-populates with <code>.cb-dot</code> buttons. One per slide.</td></tr>
+      <tr><td><code>data-cb-count</code></td><td>Counter span</td><td>JS writes "N / Total" text. Outfit 9px 500, --mid or white.</td></tr>
+    </tbody>
+  </table>
+
+  <table class="usage-table">
+    <thead><tr><th>Rule</th><th>Requirement</th></tr></thead>
+    <tbody>
+      <tr><td>Button style</td><td>Dark translucent: rgba(13,13,11,.55) bg, rgba(246,245,241,.2) border. Hover → rgba(13,13,11,.85). Never solid or colored.</td></tr>
+      <tr><td>Transition</td><td>Always <code>cubic-bezier(0.16,1,0.3,1)</code> at 0.6s. Never linear or ease.</td></tr>
+      <tr><td>Touch swipe</td><td>Required on both variants. touchstart + touchend, threshold 45px, passive listeners.</td></tr>
+      <tr><td>Disabled state</td><td>opacity:.3 on prev at slide 0, next at last slide. Controlled by JS via <code>disabled</code> attribute.</td></tr>
+      <tr><td>Active dot</td><td><code>aria-current="true"</code> on active dot. CSS targets this: background:--black, scale(1.3).</td></tr>
+      <tr><td>Variant A vs B</td><td>Use A (IDs) for one carousel per page. Use B (data-attrs) when 2+ carousels may appear on one page.</td></tr>
+      <tr><td>Image sizing (A + B)</td><td>width:100%; height:auto; max-height:80vh; object-fit:cover. Never force a fixed height.</td></tr>
+    </tbody>
+  </table>
+
+  <style>
+  /* ── VARIANT C: Horizontal Scroll + Lightbox ── */
+  .vc-wrap { margin-top: 0; }
+  .vc-track {
+    display: flex; gap: 3px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+  .vc-track::-webkit-scrollbar { height: 4px; }
+  .vc-track::-webkit-scrollbar-track { background: var(--off); }
+  .vc-track::-webkit-scrollbar-thumb { background: var(--rule); }
+  .vc-slide { flex: 0 0 320px; }
+  .vc-slide img {
+    width: 320px; height: 240px;
+    object-fit: cover; display: block;
+    cursor: zoom-in;
+    -webkit-user-drag: none; user-select: none;
+  }
+  .vc-cap {
+    font-size: .8125rem; color: var(--mid);
+    line-height: 1.6; padding-top: 12px;
+  }
+  .vc-cap strong { color: var(--black); font-weight: 500; }
+  .vc-hint {
+    font-size: .75rem; color: var(--mid);
+    letter-spacing: .08em; margin-top: 16px;
+    display: block; text-align: right;
+  }
+
+  /* ── LIGHTBOX ── */
+  .ds-lightbox {
+    position: fixed; inset: 0;
+    background: rgba(13,13,11,.88);
+    display: none; align-items: center;
+    justify-content: center; z-index: 99999; padding: 32px;
+  }
+  .ds-lightbox[aria-hidden="false"] { display: flex; }
+  .ds-lb-panel {
+    max-width: 900px; width: 100%;
+    background: var(--white);
+    display: flex; flex-direction: column;
+    max-height: 90vh;
+  }
+  .ds-lb-top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 24px; border-bottom: 1px solid var(--rule);
+  }
+  .ds-lb-title { font-size: .8125rem; color: var(--mid); font-weight: 400; }
+  .ds-lb-close {
+    background: none; border: 1px solid var(--rule);
+    padding: 8px 20px; font-family: 'Outfit', sans-serif;
+    font-size: .75rem; font-weight: 500;
+    letter-spacing: .14em; text-transform: uppercase;
+    cursor: pointer; color: var(--black); transition: background .2s;
+  }
+  .ds-lb-close:hover { background: var(--off); }
+  .ds-lb-body { padding: 24px; overflow: auto; }
+  .ds-lb-body img { width: 100%; height: auto; display: block; }
+  </style>
+
+  <!-- VARIANT C -->
+  <div class="demo-label" style="margin-bottom:16px; margin-top:48px;">Variant C — Horizontal Scroll Carousel with Lightbox (content width)</div>
+  <p class="token-note" style="margin-bottom:20px;">Use when showing a set of campaign, process, or artifact images that benefit from side-by-side browsing. No prev/next buttons — users scroll natively. Each image is clickable and opens in a full-screen lightbox. Slides are fixed-width (400px desktop, 300px mobile), not full-bleed.</p>
+
+  <div class="vc-wrap">
+    <div class="vc-track">
+      <div class="vc-slide">
+        <div style="width:320px;height:240px;background:#e0ddd7;display:flex;align-items:center;justify-content:center;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);cursor:zoom-in;" data-vc-lightbox data-title="Slide title / caption">Click to enlarge</div>
+        <p class="vc-cap"><strong>Caption label:</strong> Supporting description goes here. Outfit 300, 0.8125rem, --mid. Bold label in --black 500.</p>
+      </div>
+      <div class="vc-slide">
+        <div style="width:320px;height:240px;background:#d8d5cf;display:flex;align-items:center;justify-content:center;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);cursor:zoom-in;" data-vc-lightbox data-title="Second slide title">Click to enlarge</div>
+        <p class="vc-cap"><strong>Caption label:</strong> Supporting description for the second image.</p>
+      </div>
+      <div class="vc-slide">
+        <div style="width:320px;height:240px;background:#d0cdc7;display:flex;align-items:center;justify-content:center;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);cursor:zoom-in;" data-vc-lightbox data-title="Third slide title">Click to enlarge</div>
+        <p class="vc-cap"><strong>Caption label:</strong> Supporting description for the third image.</p>
+      </div>
+      <div class="vc-slide">
+        <div style="width:320px;height:240px;background:#c8c5bf;display:flex;align-items:center;justify-content:center;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);cursor:zoom-in;" data-vc-lightbox data-title="Fourth slide title">Click to enlarge</div>
+        <p class="vc-cap"><strong>Caption label:</strong> Supporting description for the fourth image.</p>
+      </div>
+    </div>
+    <span class="vc-hint">Click any image to enlarge · Scroll to view all →</span>
+  </div>
+
+  <!-- Lightbox markup -->
+  <div class="ds-lightbox" aria-hidden="true" id="dsLightbox">
+    <div class="ds-lb-panel">
+      <div class="ds-lb-top">
+        <p class="ds-lb-title" id="dsLbTitle">Preview</p>
+        <button class="ds-lb-close" id="dsLbClose">Close ✕</button>
+      </div>
+      <div class="ds-lb-body">
+        <div id="dsLbContent" style="width:100%;min-height:200px;background:var(--off);"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var lb = document.getElementById('dsLightbox');
+    var lbTitle = document.getElementById('dsLbTitle');
+    var lbContent = document.getElementById('dsLbContent');
+    var lbClose = document.getElementById('dsLbClose');
+    function openLb(title){
+      lbTitle.textContent = title || 'Preview';
+      lb.setAttribute('aria-hidden','false');
+      document.documentElement.style.overflow = 'hidden';
+    }
+    function closeLb(){
+      lb.setAttribute('aria-hidden','true');
+      document.documentElement.style.overflow = '';
+    }
+    document.querySelectorAll('[data-vc-lightbox]').forEach(function(el){
+      el.addEventListener('click', function(){
+        openLb(el.getAttribute('data-title'));
+      });
+    });
+    lbClose.addEventListener('click', closeLb);
+    lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && lb.getAttribute('aria-hidden') === 'false') closeLb();
+    });
+  })();
+  </script>
+
+  <table class="usage-table" style="margin-top:24px;">
+    <thead><tr><th>Element</th><th>Class / attribute</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Outer wrapper</td><td><code>.carousel-wrap</code></td><td>margin-top:40px. Contains track + hint.</td></tr>
+      <tr><td>Track</td><td><code>.carousel-track</code></td><td>display:flex; gap:3px; overflow-x:auto. Native scroll — no JS required.</td></tr>
+      <tr><td>Scrollbar</td><td><code>::-webkit-scrollbar</code></td><td>height:4px. Track: --off. Thumb: --rule.</td></tr>
+      <tr><td>Slide</td><td><code>.carousel-slide</code></td><td>flex: 0 0 400px (300px mobile). Never full-width.</td></tr>
+      <tr><td>Image</td><td><code>img</code></td><td>400×300px, object-fit:cover. cursor:zoom-in. <code>oncontextmenu="return false;"</code> + <code>draggable="false"</code>.</td></tr>
+      <tr><td>Lightbox trigger</td><td><code>data-lightbox</code> + <code>data-title</code></td><td>Attributes on the img tag. JS queries <code>[data-lightbox]</code>.</td></tr>
+      <tr><td>Caption</td><td><code>.cap</code></td><td>0.8125rem, --mid, padding-top:12px. Bold label in --black 500.</td></tr>
+      <tr><td>Scroll hint</td><td><code>.scroll-hint</code></td><td>"Click any image to enlarge · Scroll to view all →" — Outfit 0.75rem, --mid, text-align:right.</td></tr>
+      <tr><td>Lightbox overlay</td><td><code>.lightbox</code></td><td>position:fixed, rgba(13,13,11,.88). Toggle via <code>aria-hidden</code> true/false.</td></tr>
+      <tr><td>Lightbox panel</td><td><code>.lightbox-panel</code></td><td>background:--white, max-width:1000px, max-height:90vh.</td></tr>
+      <tr><td>Close button</td><td><code>.lightbox-close</code></td><td>border:1px solid --rule. Hover: background:--off. Never filled.</td></tr>
+    </tbody>
+  </table>
+
+  <table class="usage-table" style="margin-top:2px;">
+    <thead><tr><th>Choose variant</th><th>When</th></tr></thead>
+    <tbody>
+      <tr><td>Variant A — Field Carousel</td><td>Full-bleed, one image at a time, field/documentary photos. One per page.</td></tr>
+      <tr><td>Variant B — Component Carousel</td><td>Full-bleed, one image at a time, multiple carousels may co-exist on same page.</td></tr>
+      <tr><td>Variant C — Horizontal Scroll</td><td>Fixed-width content images, 3–8 slides, users need to compare or browse. Pairs with lightbox.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<script>
+// Variant A demo
+(function(){
+  var track = document.getElementById('demoTrackA');
+  var prev  = document.getElementById('demoPrevA');
+  var next  = document.getElementById('demoNextA');
+  var count = document.getElementById('demoCountA');
+  var slides = track.querySelectorAll('.ca-slide');
+  var total = slides.length, idx = 0;
+  function go(n){
+    idx = Math.max(0, Math.min(total-1, n));
+    track.style.transform = 'translateX('+(-idx*100)+'%)';
+    if(count) count.textContent = (idx+1)+' / '+total;
+    prev.disabled = idx === 0;
+    next.disabled = idx === total-1;
+  }
+  prev.addEventListener('click', function(){ go(idx-1); });
+  next.addEventListener('click', function(){ go(idx+1); });
+  var sx=0;
+  track.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  track.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)dx<0?go(idx+1):go(idx-1);},{passive:true});
+  go(0);
+})();
+
+// Variant B demo
+(function(){
+  var track = document.getElementById('demoTrackB');
+  var prev  = document.getElementById('demoPrevB');
+  var next  = document.getElementById('demoNextB');
+  var count = document.getElementById('demoCountB');
+  var dotsWrap = document.getElementById('demoDotsB');
+  var slides = track.querySelectorAll('.cb-slide');
+  var total = slides.length, idx = 0;
+  var dots = Array.from(slides).map(function(_,i){
+    var b = document.createElement('button');
+    b.className = 'cb-dot-demo';
+    b.type = 'button';
+    b.setAttribute('aria-label','Go to slide '+(i+1));
+    b.addEventListener('click',function(){ go(i); });
+    dotsWrap.appendChild(b);
+    return b;
+  });
+  function go(n){
+    idx = Math.max(0, Math.min(total-1, n));
+    track.style.transform = 'translateX('+(-idx*100)+'%)';
+    dots.forEach(function(d,i){ d.setAttribute('aria-current', i===idx?'true':'false'); });
+    if(count) count.textContent = (idx+1)+' / '+total;
+    prev.disabled = idx===0;
+    next.disabled = idx===total-1;
+  }
+  prev.addEventListener('click',function(){ go(idx-1); });
+  next.addEventListener('click',function(){ go(idx+1); });
+  var sx=0;
+  track.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  track.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)dx<0?go(idx+1):go(idx-1);},{passive:true});
+  go(0);
+})();
+</script>
+
+<!-- ICONOGRAPHY -->
+<section class="ds-section" id="iconography">
+  <div class="ds-eyebrow">08 · Iconography</div>
+  <h2><strong>Animated</strong> Iconography</h2>
+  <p class="token-note">All icons and animated marks in this system are inline SVG — never icon fonts, never emoji, never Lottie or third-party libraries. Monochromatic only, using system color tokens. Animation is always subtle and purposeful: it signals state or draws the eye to structure. It does not decorate.</p>
+
+  <style>
+  /* ── DEMO GRID ── */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-bottom: 32px;
+  }
+  .icon-cell {
+    background: var(--off);
+    padding: 36px 24px;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 20px;
+    text-align: center;
+  }
+  .icon-cell.dark { background: var(--black); }
+  .icon-label {
+    font-size: .6rem; font-weight: 500;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--mid);
+  }
+  .icon-cell.dark .icon-label { color: rgba(246,245,241,.35); }
+
+  /* ── DRAW-ON ANIMATION ── */
+  @keyframes draw-path {
+    0%   { stroke-dashoffset: 400; opacity: .25; }
+    50%  { stroke-dashoffset: 0;   opacity: 1;   }
+    100% { stroke-dashoffset:-400; opacity: .25; }
+  }
+  .anim-draw {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: draw-path 3s ease-in-out infinite;
+  }
+
+  /* ── APPEAR ON SCROLL ── */
+  @keyframes appear-fade {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0);   }
+  }
+  .anim-appear {
+    opacity: 0;
+    animation: appear-fade .6s ease forwards;
+    animation-play-state: paused;
+  }
+  .anim-appear.running { animation-play-state: running; }
+
+  /* ── LINE DRAW (arch diagram style) ── */
+  @keyframes line-draw {
+    from { stroke-dashoffset: 200; opacity: 0; }
+    to   { stroke-dashoffset: 0;   opacity: 1; }
+  }
+  .anim-line {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    opacity: 0;
+    animation: line-draw .7s ease forwards;
+    animation-play-state: paused;
+  }
+  .anim-line.running { animation-play-state: running; }
+
+  /* ── RIPPLE ── */
+  @keyframes ripple-out {
+    0%   { r: 4;  opacity: .7; }
+    100% { r: 32; opacity: 0;  }
+  }
+  .anim-ripple {
+    animation: ripple-out 2s ease-out infinite;
+  }
+
+  /* ── CLIP REVEAL (parallax image reveal) ── */
+  .clip-demo {
+    clip-path: inset(10% 6% 10% 6%);
+    transition: clip-path 1.1s cubic-bezier(0.16,1,0.3,1);
+    background: var(--mid);
+    width: 80px; height: 80px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .clip-demo.revealed {
+    clip-path: inset(0% 0% 0% 0%);
+  }
+
+  /* ── TRIGGER BUTTON ── */
+  .demo-trigger {
+    font-family: 'Outfit', sans-serif;
+    font-size: .62rem; font-weight: 500;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--mid); background: none;
+    border: 1px solid var(--rule);
+    padding: 8px 18px; cursor: pointer;
+    transition: border-color .2s, color .2s;
+    display: block; margin: 0 auto 32px;
+  }
+  .demo-trigger:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* ── TYPOGRAPHIC MARKS DEMO ── */
+  .mark-row {
+    display: flex; gap: 2px; flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .mark-cell {
+    background: var(--off);
+    padding: 28px 32px;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 12px;
+    flex: 1; min-width: 100px;
+  }
+  .mark-glyph {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem; font-weight: 400;
+    color: var(--black);
+    line-height: 1;
+  }
+  .mark-desc {
+    font-size: .6rem; font-weight: 500;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--mid); text-align: center;
+  }
+  </style>
+
+  <!-- TYPOGRAPHIC MARKS -->
+  <div class="demo-label" style="margin-bottom:16px;">Typographic Marks (preferred over icons)</div>
+  <p class="token-note" style="margin-bottom:20px;">Before reaching for an SVG icon, use a typographic mark. These are always on-brand, never require sizing decisions, and never need color management.</p>
+  <div class="mark-row">
+    <div class="mark-cell"><span class="mark-glyph">→</span><span class="mark-desc">Direction / Link CTA</span></div>
+    <div class="mark-cell"><span class="mark-glyph">·</span><span class="mark-desc">Separator / Meta</span></div>
+    <div class="mark-cell"><span class="mark-glyph">—</span><span class="mark-desc">Pause / Aside</span></div>
+    <div class="mark-cell"><span class="mark-glyph">↗︎</span><span class="mark-desc">External Link</span></div>
+    <div class="mark-cell"><span class="mark-glyph">↓</span><span class="mark-desc">Accordion Toggle</span></div>
+    <div class="mark-cell"><span class="mark-glyph">←</span><span class="mark-desc">Back / Previous</span></div>
+  </div>
+
+  <!-- ANIMATION DEMOS -->
+  <div class="demo-label" style="margin-bottom:16px;">SVG Animation Patterns</div>
+  <div class="icon-grid">
+
+    <!-- Draw-on loop -->
+    <div class="icon-cell">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="anim-draw" d="M8 32 Q20 12 32 32 Q44 52 56 32" stroke="#0d0d0b" stroke-width="1.5" fill="none"/>
+      </svg>
+      <span class="icon-label">Draw-on Loop<br><code style="font-size:.58rem;">draw-path · 3s infinite</code></span>
+    </div>
+
+    <!-- Appear on scroll -->
+    <div class="icon-cell">
+      <svg id="appearDemo" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect class="anim-appear" x="12" y="12" width="40" height="40" stroke="#0d0d0b" stroke-width="1.5"/>
+        <line class="anim-appear" style="animation-delay:.15s" x1="12" y1="32" x2="52" y2="32" stroke="#888680" stroke-width="1"/>
+        <line class="anim-appear" style="animation-delay:.3s" x1="32" y1="12" x2="32" y2="52" stroke="#888680" stroke-width="1"/>
+      </svg>
+      <span class="icon-label">Staggered Appear<br><code style="font-size:.58rem;">appear-fade · on scroll</code></span>
+    </div>
+
+    <!-- Line draw -->
+    <div class="icon-cell">
+      <svg id="lineDemo" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line class="anim-line" x1="8" y1="56" x2="56" y2="8" stroke="#0d0d0b" stroke-width="1.5"/>
+        <circle class="anim-appear" style="animation-delay:.5s" cx="8" cy="56" r="3" fill="#0d0d0b"/>
+        <circle class="anim-appear" style="animation-delay:.7s" cx="56" cy="8" r="3" fill="#0d0d0b"/>
+      </svg>
+      <span class="icon-label">Line Draw<br><code style="font-size:.58rem;">line-draw + appear-fade</code></span>
+    </div>
+
+    <!-- Ripple -->
+    <div class="icon-cell">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="4" fill="#0d0d0b"/>
+        <circle class="anim-ripple" cx="32" cy="32" r="4" fill="none" stroke="#0d0d0b" stroke-width="1"/>
+        <circle class="anim-ripple" style="animation-delay:.6s" cx="32" cy="32" r="4" fill="none" stroke="#0d0d0b" stroke-width="1"/>
+      </svg>
+      <span class="icon-label">Ripple / Pulse<br><code style="font-size:.58rem;">ripple-out · 2s infinite</code></span>
+    </div>
+
+    <!-- Clip reveal -->
+    <div class="icon-cell">
+      <div class="clip-demo" id="clipDemo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" stroke="#f6f5f1" stroke-width="1.5"/><line x1="2" y1="16" x2="30" y2="16" stroke="#f6f5f1" stroke-width="1"/></svg>
+      </div>
+      <span class="icon-label">Clip Reveal<br><code style="font-size:.58rem;">clip-path inset → 0</code></span>
+    </div>
+
+    <!-- Dark bg draw -->
+    <div class="icon-cell dark">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="anim-draw" style="animation-delay:.4s" d="M16 48 L32 16 L48 48" stroke="#f6f5f1" stroke-width="1.5" fill="none"/>
+        <line x1="22" y1="36" x2="42" y2="36" stroke="rgba(246,245,241,.35)" stroke-width="1"/>
+      </svg>
+      <span class="icon-label">On Dark Background<br><code style="font-size:.58rem;">stroke: --white / rgba</code></span>
+    </div>
+
+    <!-- Mid color draw -->
+    <div class="icon-cell">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle class="anim-draw" cx="32" cy="32" r="20" stroke="#888680" stroke-width="1.5" fill="none"/>
+        <circle cx="32" cy="32" r="3" fill="#888680"/>
+      </svg>
+      <span class="icon-label">Muted / Secondary<br><code style="font-size:.58rem;">stroke: --mid</code></span>
+    </div>
+
+    <!-- Forbidden -->
+    <div class="icon-cell" style="background:#fff; border:1px solid var(--rule); opacity:.5; position:relative;">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+        <rect x="8" y="8" width="20" height="20" rx="4" fill="#4CAF50"/>
+        <rect x="36" y="8" width="20" height="20" rx="4" fill="#2196F3"/>
+        <rect x="8" y="36" width="20" height="20" rx="4" fill="#FF9800"/>
+        <rect x="36" y="36" width="20" height="20" rx="4" fill="#E91E63"/>
+        <line x1="4" y1="4" x2="60" y2="60" stroke="#0d0d0b" stroke-width="2"/>
+      </svg>
+      <span class="icon-label" style="color:#888680;">Multicolor Icons<br><code style="font-size:.58rem;">Never — prohibited</code></span>
+    </div>
+
+  </div>
+
+  <button class="demo-trigger" id="triggerAnims">Trigger scroll animations ↓</button>
+
+  <script>
+  (function(){
+    // Auto-run appear/line demos on load with short delay
+    function runAppear(){
+      document.querySelectorAll('#appearDemo .anim-appear, #lineDemo .anim-appear, #lineDemo .anim-line').forEach(function(el){
+        el.classList.add('running');
+        el.addEventListener('animationend', function(){
+          el.classList.remove('running');
+          setTimeout(function(){ el.classList.add('running'); }, 800);
+        });
+      });
+    }
+    setTimeout(runAppear, 600);
+
+    // Clip reveal demo
+    var clipEl = document.getElementById('clipDemo');
+    function toggleClip(){
+      clipEl.classList.toggle('revealed');
+      setTimeout(function(){ clipEl.classList.toggle('revealed'); }, 1200);
+    }
+    setTimeout(toggleClip, 400);
+    setInterval(toggleClip, 2800);
+
+    // Manual trigger button
+    document.getElementById('triggerAnims').addEventListener('click', function(){
+      document.querySelectorAll('.anim-appear, .anim-line').forEach(function(el){
+        el.classList.remove('running');
+        void el.offsetWidth; // reflow
+        el.classList.add('running');
+      });
+    });
+  })();
+  </script>
+
+  <table class="usage-table">
+    <thead><tr><th>Pattern</th><th>Keyframe / technique</th><th>Use when</th></tr></thead>
+    <tbody>
+      <tr><td>Draw-on loop</td><td><code>draw-path</code> · 3s infinite · stroke-dashoffset</td><td>Hero or How I Work SVG marks. Continuous ambient motion only — never on small UI icons.</td></tr>
+      <tr><td>Staggered appear</td><td><code>appear-fade</code> · opacity 0→1 + translateY(8→0) · IntersectionObserver</td><td>SVG diagram elements, architecture nodes. Trigger via <code>.running</code> class on scroll.</td></tr>
+      <tr><td>Line draw</td><td><code>line-draw</code> · stroke-dashoffset 200→0 · triggered</td><td>Connector lines in architecture/flow diagrams. Pair with staggered appear on nodes.</td></tr>
+      <tr><td>Ripple / pulse</td><td><code>ripple-out</code> · r 4→32 · opacity .7→0 · 2s infinite · stagger offset</td><td>Live / active state indicator. Two rings, offset 0.6s. Never purely decorative.</td></tr>
+      <tr><td>Clip reveal</td><td><code>clip-path inset(10% 6%) → inset(0%)</code> · 1.1s cubic-bezier · IntersectionObserver</td><td>Full-width image reveals on scroll. Threshold 0.08.</td></tr>
+    </tbody>
+  </table>
+
+  <table class="usage-table" style="margin-top:2px;">
+    <thead><tr><th>Rule</th><th>Requirement</th></tr></thead>
+    <tbody>
+      <tr><td>Color</td><td>Stroke/fill must use system tokens only: --black, --white, --mid, or rgba variants. No hues.</td></tr>
+      <tr><td>Stroke weight</td><td>1px for secondary/structural lines. 1.5px for primary paths. Never heavier than 2px.</td></tr>
+      <tr><td>Fill</td><td>Prefer strokes over fills. Filled shapes use --black, --mid, or rgba(--white). No solid color fills.</td></tr>
+      <tr><td>Border radius</td><td>Always 0 in SVG shapes (rx="0"). Consistent with the rest of the system.</td></tr>
+      <tr><td>Easing</td><td>ease or ease-in-out for all path animations. cubic-bezier(0.16,1,0.3,1) for reveals.</td></tr>
+      <tr><td>Duration</td><td>Triggered: 0.5–0.75s per element. Looping ambient: 2–3s. Never under 0.4s.</td></tr>
+      <tr><td>Stagger delay</td><td>0.1–0.2s between sequential elements. Use CSS <code>animation-delay</code> or <code>--d</code> custom property.</td></tr>
+      <tr><td>Play state</td><td>Triggered animations start paused. Add <code>.running</code> class via IntersectionObserver — never autoplay on load.</td></tr>
+      <tr><td>Typographic first</td><td>→ · — ↗︎ ↓ ← are preferred over SVG for inline directional marks. Only use SVG when the icon communicates something a glyph cannot.</td></tr>
+      <tr><td>No icon fonts</td><td>Never use FontAwesome, Material Icons, or any icon font. Inline SVG only.</td></tr>
+      <tr><td>No emoji</td><td>Never. Not in content, not as decorative marks, not in any output.</td></tr>
+      <tr><td>No Lottie / GreenSock</td><td>CSS animation only. No third-party animation libraries in custom HTML widgets.</td></tr>
+      <tr><td>Multicolor prohibited</td><td>Icons with more than one color are never used. Monochromatic only.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- RULES -->
+<section class="ds-section" id="rules">
+  <div class="ds-eyebrow">09 · Rules</div>
+  <h2><strong>Design</strong> Rules</h2>
+
+  <table class="usage-table">
+    <thead><tr><th>Rule</th><th>Requirement</th></tr></thead>
+    <tbody>
+      <tr><td>Border radius</td><td>Always 0. No rounded corners anywhere in this system.</td></tr>
+      <tr><td>Grid gaps</td><td>Always 2px. Set gap:2px + background:var(--rule) on parent element.</td></tr>
+      <tr><td>Colors</td><td>6 tokens only. No new colors without direction. No hues of any kind.</td></tr>
+      <tr><td>Fonts</td><td>EB Garamond + Outfit only. No third font ever.</td></tr>
+      <tr><td>Uppercase text</td><td>Outfit only. Never EB Garamond in uppercase — ever.</td></tr>
+      <tr><td>H2 / H3 fonts</td><td>EB Garamond only. Never Outfit on section headings.</td></tr>
+      <tr><td>Serif in all-caps</td><td>Never. Prohibited even if explicitly requested in error.</td></tr>
+      <tr><td>Hover — buttons</td><td>opacity 0.7 + translateY(-1px). No color/background change.</td></tr>
+      <tr><td>Hover — cards</td><td>background → --off. Accent bar scaleX(0→1) on ::after if used.</td></tr>
+      <tr><td>Hover — links</td><td>opacity 0.5 globally. Inline links: opacity 0.6.</td></tr>
+      <tr><td>Images</td><td>Never crop or force into fixed aspect ratios. Build layout around natural dimensions.</td></tr>
+      <tr><td>Reveal animation</td><td>opacity 0→1 + translateY(22px→0), 0.75s ease. IntersectionObserver only.</td></tr>
+      <tr><td>Nav behavior</td><td>Transparent until scroll > 60px, then background: rgba(13,13,11,.94) + backdrop-filter: blur(12px).</td></tr>
+      <tr><td>Print backgrounds</td><td>Use pure #ffffff (not --white) for page backgrounds in print/PDF documents.</td></tr>
+      <tr><td>Print overflow</td><td>height: 11in + overflow: hidden on .page divs. No content past page boundary.</td></tr>
+      <tr><td>Elementor CSS</td><td>Deliver via WPCode footer (after Elementor stylesheet). Scope to specific element IDs where possible.</td></tr>
+      <tr><td>Elementor mobile edits</td><td>Mobile view changes apply globally. Use WPCode CSS overrides, not Elementor mobile panel.</td></tr>
+      <tr><td>Duplicate content</td><td>Never duplicate content on the same page. One instance per piece of information.</td></tr>
+      <tr><td>Emojis / icons</td><td>None. Use typographic marks (—, ·, →) or monochromatic SVG only if essential.</td></tr>
+      <tr><td>Blog nav</td><td>Blog page must not appear in site navigation until fully ready and launched.</td></tr>
+      <tr><td>Section stacking</td><td>Never stack two dark (--black) sections. Max one dark section per page.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div><!-- /doc-body -->
+</body>
+</html>
