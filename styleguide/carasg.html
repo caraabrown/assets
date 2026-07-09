@@ -440,7 +440,8 @@ code {
   <a href="#sections">06 · Section Patterns</a>
   <a href="#carousels">07 · Carousels</a>
   <a href="#iconography">08 · Iconography</a>
-  <a href="#rules">09 · Rules</a>
+  <a href="#presentation">09 · Presentation Media</a>
+  <a href="#rules">10 · Rules</a>
 </nav>
 
 <div class="doc-body">
@@ -1487,9 +1488,127 @@ code {
   </table>
 </section>
 
+<!-- PRESENTATION MEDIA -->
+<section class="ds-section" id="presentation">
+  <div class="ds-eyebrow">09 · Presentation Media</div>
+  <h2><strong>Presentation</strong> Media — Slides Only</h2>
+  <p class="token-note"><strong>Scope:</strong> This section governs the HTML slide deck format (1280×720, 16:9) — not the website. The web rules in section 10 (grayscale images, natural aspect ratios, no full-bleed) do <strong>not</strong> apply here. Slides use full-bleed, vivid imagery and video for emotional impact; the audience listens while a single image holds the frame.</p>
+
+  <!-- IMAGE + VIDEO SOURCES -->
+  <div class="demo-label" style="margin-bottom:16px;">Where to Pull Images &amp; Video</div>
+  <p class="token-note" style="margin-bottom:20px;">All three are free for commercial use with no attribution required. Pull like fonts: search, download high-res, drop in.</p>
+  <table class="usage-table">
+    <thead><tr><th>Source</th><th>Has</th><th>Use for</th></tr></thead>
+    <tbody>
+      <tr><td>pexels.com</td><td>Photos + Video</td><td>Primary source. Only one with strong photo AND 4K video in one place. Full-bleed backgrounds, B-roll.</td></tr>
+      <tr><td>unsplash.com</td><td>Photos only</td><td>Highest editorial quality. Atmospheric hero stills, texture.</td></tr>
+      <tr><td>pixabay.com</td><td>Photos + Video + Illustration</td><td>Largest volume. Fallback when Pexels/Unsplash miss.</td></tr>
+    </tbody>
+  </table>
+  <table class="usage-table" style="margin-top:2px;">
+    <thead><tr><th>Rule</th><th>Requirement</th></tr></thead>
+    <tbody>
+      <tr><td>Real over stock</td><td>For Kroger / logistics / operational work, real photos (distribution centers, trailers, drivers) beat stock every time. Use stock for texture and atmosphere, never as the primary evidence of the work.</td></tr>
+      <tr><td>Resolution</td><td>Minimum 1920px wide for stills, 1080p for video. Full-bleed at 1280×720 needs headroom to avoid softness on projectors.</td></tr>
+      <tr><td>Format</td><td>Photos: JPG. Video: MP4 (H.264). No GIF for full-frame motion.</td></tr>
+      <tr><td>Licensing</td><td>Pexels / Unsplash / Pixabay only. No Google Images. No screenshots of paywalled stock (Getty, Shutterstock watermarks).</td></tr>
+    </tbody>
+  </table>
+
+  <!-- FULL-BLEED IMAGE SPEC -->
+  <div class="demo-label" style="margin:36px 0 16px;">Full-Bleed Image / Video Slide</div>
+  <p class="token-note" style="margin-bottom:20px;">The signature slide format. Image or video fills the entire 1280×720 frame. Text sits on a dark scrim so it stays legible over any image.</p>
+  <div style="position:relative; height:340px; overflow:hidden; margin-bottom:2px; background:linear-gradient(135deg,#1a2e2e 0%,#0d1a1a 100%);">
+    <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(13,13,11,.85) 0%, rgba(13,13,11,.3) 55%, transparent 100%);"></div>
+    <div style="position:absolute; bottom:0; left:0; right:0; padding:48px 56px;">
+      <span style="font-family:'Outfit',sans-serif; font-size:.6rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:rgba(200,213,220,.7); display:block; margin-bottom:14px;">Distribution Network · 34 Centers</span>
+      <span style="font-family:'EB Garamond',serif; font-size:2.4rem; font-weight:400; line-height:1.1; letter-spacing:-.02em; color:#f6f5f1; display:block; max-width:640px;">NPS moved from &minus;36 to +49 in eleven months.</span>
+    </div>
+  </div>
+  <table class="usage-table">
+    <thead><tr><th>Property</th><th>Spec</th></tr></thead>
+    <tbody>
+      <tr><td>Slide size</td><td>1280 × 720px (16:9). Every slide, no exceptions.</td></tr>
+      <tr><td>Image fit</td><td><code>background-size: cover; background-position: center;</code> — fills frame, no letterboxing.</td></tr>
+      <tr><td>Scrim (text legibility)</td><td><code>linear-gradient(to top, rgba(13,13,11,.85) 0%, rgba(13,13,11,.3) 55%, transparent 100%)</code>. Darkens bottom where text sits.</td></tr>
+      <tr><td>Text position</td><td>Bottom-left, padding 48px 56px. Eyebrow (Outfit) + headline (EB Garamond).</td></tr>
+      <tr><td>Border radius</td><td>0. Full-bleed means edge-to-edge.</td></tr>
+      <tr><td>Video</td><td>Autoplay, muted, loop. <code>&lt;video autoplay muted loop playsinline&gt;</code> with same cover fit + scrim.</td></tr>
+      <tr><td>Grayscale filter</td><td><strong>Not used on slides.</strong> Web-only treatment. Slide images stay full-color and vivid.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- COLOR ON SLIDES -->
+  <div class="demo-label" style="margin:36px 0 16px;">Slide Color — Jewel Tones on Dark</div>
+  <p class="token-note" style="margin-bottom:20px;">Slides break the website's neutral palette. Default to dark backgrounds with jewel-tone accents for depth and richness. Minimize white-background slides — reserve them for a deliberate contrast beat, never as the default.</p>
+  <div class="swatch-row">
+    <div class="swatch"><div class="swatch-chip" style="background:#0d1a1a;"></div><div class="swatch-info"><span class="swatch-name">Deep Teal-Black</span><span class="swatch-hex">#0d1a1a</span><span class="swatch-use">Primary slide bg</span></div></div>
+    <div class="swatch"><div class="swatch-chip" style="background:#1b4d4d;"></div><div class="swatch-info"><span class="swatch-name">Emerald</span><span class="swatch-hex">#1b4d4d</span><span class="swatch-use">Accent / infographic</span></div></div>
+    <div class="swatch"><div class="swatch-chip" style="background:#2c2a4a;"></div><div class="swatch-info"><span class="swatch-name">Deep Indigo</span><span class="swatch-hex">#2c2a4a</span><span class="swatch-use">Alt section bg</span></div></div>
+    <div class="swatch"><div class="swatch-chip" style="background:#5b3a7a;"></div><div class="swatch-info"><span class="swatch-name">Amethyst</span><span class="swatch-hex">#5b3a7a</span><span class="swatch-use">Jewel accent</span></div></div>
+    <div class="swatch"><div class="swatch-chip" style="background:#c8d5dc;"></div><div class="swatch-info"><span class="swatch-name">Pale Slate</span><span class="swatch-hex">#c8d5dc</span><span class="swatch-use">Eyebrow text on dark</span></div></div>
+  </div>
+  <table class="usage-table">
+    <thead><tr><th>Rule</th><th>Requirement</th></tr></thead>
+    <tbody>
+      <tr><td>Default background</td><td>Dark. Jewel-toned. Never a white slide as the resting default.</td></tr>
+      <tr><td>White slides</td><td>Maximum 1–2 per deck, used as a deliberate contrast beat. Not filler.</td></tr>
+      <tr><td>Accent use</td><td>Jewel tones for infographic fills, stat highlights, dividers — one accent family per deck for cohesion.</td></tr>
+      <tr><td>Text on dark</td><td>Headlines #f6f5f1. Eyebrows Pale Slate #c8d5dc at 60–70% opacity.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ICONS ON SLIDES -->
+  <div class="demo-label" style="margin:36px 0 16px;">Icons on Slides</div>
+  <p class="token-note" style="margin-bottom:20px;">Web rule is inline SVG only. For slides, a downloadable icon library is faster and keeps a consistent grid. Monochromatic white only — never multicolor, never emoji.</p>
+  <table class="usage-table">
+    <thead><tr><th>Source</th><th>How</th></tr></thead>
+    <tbody>
+      <tr><td>Google Material Symbols</td><td>Primary. Load like a Google Font (one <code>&lt;link&gt;</code>), set <code>color:#f6f5f1</code> for white. Every icon on the same grid.</td></tr>
+      <tr><td>svgrepo.com</td><td>Fallback for one-off icons Material lacks. Download SVG, set <code>fill:#f6f5f1</code>.</td></tr>
+    </tbody>
+  </table>
+  <table class="usage-table" style="margin-top:2px;">
+    <thead><tr><th>Rule</th><th>Requirement</th></tr></thead>
+    <tbody>
+      <tr><td>Color</td><td>White (#f6f5f1) on dark slides. Monochromatic only. No multicolor, no yellow-skin emoji, no emoji at all.</td></tr>
+      <tr><td>Weight</td><td>Match EB Garamond / Outfit — light-to-regular icon weight, not bold. Material Symbols weight 300–400.</td></tr>
+      <tr><td>Size</td><td>Consistent within a deck. 32–48px for inline, up to 96px for a hero mark.</td></tr>
+      <tr><td>One library</td><td>Don't mix Material + SVG Repo styles in the same deck. Pick one look.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- TRANSITIONS -->
+  <div class="demo-label" style="margin:36px 0 16px;">Transitions — Fade-In on Advance</div>
+  <p class="token-note" style="margin-bottom:20px;">The signature motion: each point fades in slowly on advance so the audience <strong>listens</strong> to Cara rather than reading ahead. Content is revealed on her pace, not all at once.</p>
+  <table class="usage-table">
+    <thead><tr><th>Property</th><th>Spec</th></tr></thead>
+    <tbody>
+      <tr><td>Per-element fade</td><td><code>opacity 0→1 + translateY(16px→0)</code>, 0.9s <code>ease</code>. Slower than web (0.75s) — deliberately unhurried.</td></tr>
+      <tr><td>Trigger</td><td>On slide advance / click. Each bullet or block reveals in sequence, not simultaneously.</td></tr>
+      <tr><td>Stagger</td><td>0.15–0.25s between sequential points. Audience reads one line, hears the story, next line appears.</td></tr>
+      <tr><td>Slide-to-slide</td><td>Full-slide cross-fade, 0.6s ease. No hard cuts, no swooshing or spinning transitions.</td></tr>
+      <tr><td>Easing</td><td><code>ease</code> or <code>cubic-bezier(0.16,1,0.3,1)</code> for reveals. Never bounce, never linear.</td></tr>
+      <tr><td>Restraint</td><td>Fade and cross-fade only. No PowerPoint-style wipes, flips, or zooms.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- INFOGRAPHICS -->
+  <div class="demo-label" style="margin:36px 0 16px;">Infographics &amp; Data</div>
+  <table class="usage-table">
+    <thead><tr><th>Rule</th><th>Requirement</th></tr></thead>
+    <tbody>
+      <tr><td>Every data slide</td><td>Show the number as a visual, not a sentence. Big EB Garamond stat + jewel-tone bar/arc, not a paragraph.</td></tr>
+      <tr><td>Stat treatment</td><td>EB Garamond, clamp(2.8rem, 5vw, 4.5rem), white on dark. Label below in Outfit uppercase.</td></tr>
+      <tr><td>Charts</td><td>Monochromatic + one jewel accent. No default rainbow chart palettes.</td></tr>
+      <tr><td>NPS / before-after</td><td>Show the swing visually (−36 → +49) with a rule or arc, animated to draw on advance.</td></tr>
+    </tbody>
+  </table>
+</section>
+
 <!-- RULES -->
 <section class="ds-section" id="rules">
-  <div class="ds-eyebrow">09 · Rules</div>
+  <div class="ds-eyebrow">10 · Rules</div>
   <h2><strong>Design</strong> Rules</h2>
 
   <table class="usage-table">
