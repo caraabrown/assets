@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Cara A. Brown — Resume Format Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'IBM Plex Sans',sans-serif;background:#f4f3f0;color:#1a1a1a;padding:48px;}
+
+.brand-name{font-size:28px;font-weight:700;color:#1a2744;letter-spacing:-.02em;margin-bottom:4px;}
+.brand-sub{font-size:9px;color:#999;letter-spacing:.18em;text-transform:uppercase;}
+.section-label{font-size:9px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#888;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #e0ddd8;}
+.divider{height:1px;background:#e0ddd8;margin:36px 0;}
+.row{display:flex;gap:24px;margin-bottom:36px;flex-wrap:wrap;align-items:flex-start;}
+
+/* swatches */
+.swatch{border-radius:6px;overflow:hidden;width:108px;}
+.swatch-block{height:64px;}
+.swatch-name{font-size:10px;font-weight:500;margin-top:8px;color:#1a1a1a;}
+.swatch-hex{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#888;margin-top:2px;}
+.swatch-role{font-size:9px;color:#bbb;margin-top:1px;}
+
+/* type samples */
+.type-spec{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#aaa;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;}
+.type-sample{border-bottom:1px solid #e8e6e2;padding-bottom:14px;margin-bottom:14px;}
+.type-sample:last-child{border-bottom:none;}
+
+/* component cards */
+.comp-card{background:#fff;border:1px solid #e8e6e2;border-radius:8px;padding:20px 24px;flex:1;min-width:300px;}
+.comp-label{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#888;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;}
+
+/* resume component previews */
+.preview-name{font-family:'Helvetica Neue',Arial,sans-serif;font-size:22pt;font-weight:700;letter-spacing:-.02em;color:#0d0d0b;line-height:1;}
+.preview-name span{font-weight:300;}
+.preview-title{font-family:'Helvetica Neue',Arial,sans-serif;font-size:8pt;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#2a4080;margin-top:4px;line-height:1.4;}
+.preview-contact{font-family:'Helvetica Neue',Arial,sans-serif;font-size:7pt;font-weight:300;color:#888680;letter-spacing:.03em;margin-top:4px;}
+.preview-hbar{height:2px;background:#2a4080;margin:10px 0;}
+.preview-sec{font-family:'Helvetica Neue',Arial,sans-serif;font-size:6pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2a4080;border-bottom:1px solid #dddad3;padding-bottom:3px;margin-bottom:6px;}
+.preview-synopsis{font-family:'Helvetica Neue',Arial,sans-serif;font-size:7pt;color:#1e1e1c;line-height:1.5;}
+.preview-job-header{display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;}
+.preview-org{font-family:'Helvetica Neue',Arial,sans-serif;font-size:8pt;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#0d0d0b;}
+.preview-date{font-family:'Helvetica Neue',Arial,sans-serif;font-size:7pt;font-weight:300;color:#888680;letter-spacing:.04em;}
+.preview-job-title{font-family:'Helvetica Neue',Arial,sans-serif;font-size:7.5pt;font-weight:600;color:#2a4080;margin-top:2px;margin-bottom:6px;}
+.preview-bullets{list-style:none;}
+.preview-bullets li{font-family:'Helvetica Neue',Arial,sans-serif;font-size:7pt;color:#1e1e1c;line-height:1.5;padding-left:12px;position:relative;margin-bottom:4px;}
+.preview-bullets li::before{content:'—';position:absolute;left:0;color:#2a4080;font-weight:600;}
+.preview-grid{display:block;}
+.preview-cat{font-family:'Helvetica Neue',Arial,sans-serif;font-size:5.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1e1e1c;margin-top:4px;margin-bottom:1px;}
+.preview-detail{font-family:'Helvetica Neue',Arial,sans-serif;font-size:6.5pt;font-weight:300;color:#888680;line-height:1.45;}
+.preview-footer{display:flex;justify-content:space-between;font-family:'Helvetica Neue',Arial,sans-serif;font-size:5.5pt;font-weight:300;color:#888680;letter-spacing:.05em;padding-top:8px;border-top:1px solid #dddad3;margin-top:10px;}
+
+/* prompt block */
+.prompt-block{background:#1a2744;border-radius:10px;padding:28px 32px;}
+.prompt-block pre{font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,0.82);line-height:1.75;white-space:pre-wrap;word-break:break-word;}
+.prompt-block .prompt-label{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:14px;}
+
+/* do/dont */
+.rule-card{flex:1;min-width:180px;background:#fff;border-radius:8px;padding:16px 18px;border:1px solid #e8e6e2;}
+.rule-head-yes{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#27500a;margin-bottom:8px;}
+.rule-head-no{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#791f1f;margin-bottom:8px;}
+.rule-body{font-size:11px;color:#3a3a3a;line-height:1.8;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div style="margin-bottom:40px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;">
+  <div>
+    <div class="brand-name">Cara A. Brown</div>
+    <div class="brand-sub">Resume Format System · Style Guide</div>
+  </div>
+  <div style="font-size:9px;color:#bbb;letter-spacing:.08em;text-transform:uppercase;text-align:right;">Print-Ready HTML<br>Three-Page Resume Format (v4+)</div>
+</div>
+
+<!-- COLORS -->
+<div class="section-label">Color Palette</div>
+<div class="row">
+  <div class="swatch">
+    <div class="swatch-block" style="background:#0d0d0b;"></div>
+    <div class="swatch-name">Black</div>
+    <div class="swatch-hex">#0d0d0b</div>
+    <div class="swatch-role">Name / headings</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-block" style="background:#1a2744;"></div>
+    <div class="swatch-name">Navy</div>
+    <div class="swatch-hex">#1a2744</div>
+    <div class="swatch-role">Print bar / footer</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-block" style="background:#2a4080;"></div>
+    <div class="swatch-name">Accent Blue</div>
+    <div class="swatch-hex">#2a4080</div>
+    <div class="swatch-role">Title / sec labels / bullets / hbar</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-block" style="background:#1e1e1c;"></div>
+    <div class="swatch-name">Ink</div>
+    <div class="swatch-hex">#1e1e1c</div>
+    <div class="swatch-role">Body text / bullets</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-block" style="background:#888680;border:1px solid #e0ddd8;"></div>
+    <div class="swatch-name">Mid Gray</div>
+    <div class="swatch-hex">#888680</div>
+    <div class="swatch-role">Contact / dates / captions</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-block" style="background:#dddad3;border:1px solid #e0ddd8;"></div>
+    <div class="swatch-name">Rule</div>
+    <div class="swatch-hex">#dddad3</div>
+    <div class="swatch-role">Dividers / borders</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-block" style="background:#efede8;border:1px solid #e0ddd8;"></div>
+    <div class="swatch-name">Off White</div>
+    <div class="swatch-hex">#efede8</div>
+    <div class="swatch-role">Page background (screen)</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-block" style="background:#ffffff;border:1px solid #e0ddd8;"></div>
+    <div class="swatch-name">White</div>
+    <div class="swatch-hex">#ffffff</div>
+    <div class="swatch-role">Page surface</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TYPOGRAPHY -->
+<div class="section-label">Typography</div>
+<div class="row" style="gap:40px;">
+  <div style="flex:1;min-width:280px;">
+    <div class="type-sample">
+      <div class="type-spec">Name — Helvetica Neue 700, −0.02em, 22–25pt</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:26px;font-weight:700;letter-spacing:-.02em;color:#0d0d0b;line-height:1;">Cara A. Brown, <span style="font-weight:300;">MBA</span></div>
+    </div>
+    <div class="type-sample">
+      <div class="type-spec">Title — 6.5–7.8pt / 600 / 0.08–0.1em tracking / uppercase / accent — MAX 3 ITEMS · must fit 1 line · roles/functions only, no skills</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#2a4080;">Principal Service Designer &nbsp;·&nbsp; AI Adoption &amp; Operations Strategist &nbsp;·&nbsp; Enterprise Transformation Leader</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-spec">Contact — 7.5pt / 300 / 0.03em / mid gray</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:300;color:#888680;letter-spacing:.03em;">(202) 489-9901 &nbsp;·&nbsp; hi@caraabrown.com &nbsp;·&nbsp; caraabrown.com</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-spec">Section Label — 6pt / 700 / 0.08em / uppercase / accent / rule below</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:8px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#2a4080;border-bottom:1px solid #dddad3;padding-bottom:4px;">Professional Experience</div>
+    </div>
+  </div>
+  <div style="flex:1;min-width:280px;">
+    <div class="type-sample">
+      <div class="type-spec">Company — 8.5pt / 700 / 0.04em / uppercase / black</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#0d0d0b;">Kroger</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-spec">Job Title — 8pt / 600 / accent color</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10.5px;font-weight:600;color:#2a4080;">Senior Service Designer — Enterprise Transportation &amp; Logistics</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-spec">Body / Bullets — 7.5pt / 400 / 1.5 line-height / ink</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;color:#1e1e1c;line-height:1.5;">Led end-to-end service design across a 34-DC enterprise network — service blueprinting, journey mapping, and experience prototyping to redesign a historically invisible service domain.</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-spec">Competency Label — 6pt / 700 / 0.1em / uppercase / ink</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1e1e1c;">Service Design &amp; Research</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- COMPONENTS -->
+<div class="section-label">Component Library</div>
+<div class="row">
+
+  <!-- Header block -->
+  <div class="comp-card">
+    <div class="comp-label">Header Block</div>
+    <div class="preview-name">Cara A. Brown, <span>MBA</span></div>
+    <div class="preview-title">Service Designer &nbsp;·&nbsp; Systems Thinking &nbsp;·&nbsp; HCD</div>
+    <div class="preview-contact">(202) 489-9901 &nbsp;·&nbsp; hi@caraabrown.com &nbsp;·&nbsp; caraabrown.com (portfolio)</div>
+    <div class="preview-hbar"></div>
+  </div>
+
+  <!-- Section label -->
+  <div class="comp-card">
+    <div class="comp-label">Section Label + Synopsis — CORRECT TONE MODEL</div>
+    <div class="preview-sec">Synopsis</div>
+    <div class="preview-synopsis">Proven Principal Service Designer with enterprise-scale impact across logistics, e-commerce, global employee experience, public sector, and nonprofit delivery — specializing in <strong style="font-weight:600;color:#0d0d0b;">end-to-end service design, systems diagnosis, and experience strategy</strong>. Leads complex initiatives from discovery through implementation: service blueprinting, journey mapping, operational diagnosis, stakeholder alignment, and experience infrastructure that makes outcomes stick. Revived a stalled $270M/week trailer-tracking initiative in four months, drove NPS from −36 to +49 across 34 distribution centers, and co-authored the transportation strategy that aligned $24M in annual technology investment. Decisive, cross-functional partner fluent in both executive visioning and ground-level operations. MBA, Design Strategy — California College of the Arts, ranked #2 graduate design program globally.</div>
+    <div style="margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#c0392b;letter-spacing:.04em;">✕ BANNED TONE: "The work is rarely what it appears..." / "I start there" / rhetorical "what looks like X is really Y" constructions</div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <!-- Job block -->
+  <div class="comp-card">
+    <div class="comp-label">Job Block</div>
+    <div class="preview-job-header">
+      <span class="preview-org">Kroger</span>
+      <span class="preview-date">03/2022 – 09/2025 &nbsp;·&nbsp; Cincinnati, OH (Remote)</span>
+    </div>
+    <div class="preview-job-title">Senior Service Designer — Enterprise Transportation &amp; Logistics</div>
+    <ul class="preview-bullets">
+      <li>Led end-to-end service design across a 34-DC enterprise network — service blueprinting, journey mapping, and experience prototyping. <strong style="font-weight:600;color:#0d0d0b;">NPS: −36 → +49. Driver satisfaction: 36% → 74%.</strong></li>
+      <li>Facilitated co-design workshops and co-creation sessions across Product, Engineering, Operations, HR, and Finance to align diverse stakeholders around shared service outcomes.</li>
+    </ul>
+  </div>
+
+  <!-- Competency grid -->
+  <div class="comp-card">
+    <div class="comp-label">Competency Grid (2-col)</div>
+    <div class="preview-grid">
+      <div>
+        <div class="preview-cat">Service Design</div>
+        <div class="preview-detail">Service blueprinting · Journey mapping · Ecosystem modeling · Experience prototyping · Storyboarding</div>
+      </div>
+      <div>
+        <div class="preview-cat">Research &amp; Synthesis</div>
+        <div class="preview-detail">User interviews · Qualitative synthesis · Usability testing · Persona development · Insight prioritization</div>
+      </div>
+      <div>
+        <div class="preview-cat">Facilitation</div>
+        <div class="preview-detail">Workshop facilitation · Co-creation sessions · Executive alignment · Stakeholder management</div>
+      </div>
+      <div>
+        <div class="preview-cat">Tools</div>
+        <div class="preview-detail">Figma · Miro · FigJam · Mural · Microsoft 365 · Confluence · Jira · Adobe Creative Suite</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <!-- Page footer -->
+  <div class="comp-card">
+    <div class="comp-label">Page Footer</div>
+    <div class="preview-footer">
+      <span>Cara A. Brown, MBA</span>
+      <span>Page 1 of 2</span>
+      <span>caraabrown.com</span>
+    </div>
+  </div>
+
+  <!-- Accent bar -->
+  <div class="comp-card">
+    <div class="comp-label">Accent Bar (2px, top of page 2)</div>
+    <div style="height:2px;background:#2a4080;border-radius:0;margin:10px 0;"></div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#aaa;">height: 2px · background: var(--accent) · margin-bottom: .14in</div>
+  </div>
+
+  <!-- em-dash bullet -->
+  <div class="comp-card">
+    <div class="comp-label">Em-Dash Bullet (CSS ::before)</div>
+    <ul class="preview-bullets" style="margin-top:4px;">
+      <li>Bullet text rendered via <code style="font-family:'IBM Plex Mono',monospace;font-size:8px;background:#f4f3f0;padding:1px 4px;">ul.bullets li::before { content:'—' }</code></li>
+      <li><strong style="font-weight:600;color:#0d0d0b;">Bold metric callouts</strong> use <code style="font-family:'IBM Plex Mono',monospace;font-size:8px;background:#f4f3f0;padding:1px 4px;">&lt;strong&gt;</code> inside li</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<!-- PAGE STRUCTURE -->
+<div class="section-label">Page Structure</div>
+<div class="row" style="gap:16px;">
+  <div class="rule-card">
+    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1a2744;margin-bottom:8px;">Page Dimensions — 2-Page Resume</div>
+    <div class="rule-body">Width: 8.5in<br>Height: 11in<br>Padding: 0.28in top/bottom · 0.6in left/right<br>Overflow: hidden<br>Background: #ffffff<br>Box shadow: screen only<br><br>.hbar margin: 0.11in 0 (page 1 only)<br>.sec-label margin-top: 0.06in · margin-bottom: 0.05in<br>.synopsis line-height: 1.5<br>.job-block margin-bottom: 0.07in<br>.bullets li line-height: 1.5 · margin-bottom: 0.02in</div>
+  </div>
+  <div class="rule-card">
+    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1a2744;margin-bottom:8px;">Page Dimensions — 3-Page Resume</div>
+    <div class="rule-body">Width: 8.5in<br>Height: 11in<br>Padding: 0.32in top · 0.18in bottom · 0.55in left/right<br>Overflow: hidden<br>Background: #ffffff<br>Box shadow: screen only<br><br>.hbar margin: 0.04in 0 (page 1 only)<br>.sec-label margin-top: 0.06in · margin-bottom: 0.05in<br>.synopsis line-height: 1.5<br>.job-block margin-bottom: 0.07in<br>.bullets li line-height: 1.5 · margin-bottom: 0.02in</div>
+  </div>
+  <div class="rule-card">
+    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1a2744;margin-bottom:8px;">All Resumes — Page Flow Rules</div>
+    <div class="rule-body">Content flows naturally across pages — never artificially constrained to a specific page<br>BANNED: "Kroger only on page 1" or any rule that locks content to a specific page<br>Fill each page as naturally as content allows<br>Never leave a page mostly empty to force content to the next<br>Never overflow a page — split content at a logical break point<br>Footer mandatory on every page<br>Every .page uses display:flex; flex-direction:column so footer pins to bottom via margin-top:auto<br>.hbar appears on page 1 only — never on pages 2 or 3</div>
+  </div>
+  <div class="rule-card">
+    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1a2744;margin-bottom:8px;">2-Page Resume — Content Order</div>
+    <div class="rule-body"><strong>Page 1:</strong><br>Header (name / title / contact)<br>Accent bar (.hbar)<br>Synopsis<br>Areas of Expertise (single column)<br>Tools<br>Professional Experience — content flows until page is full<br>Page footer<br><br><strong>Page 2:</strong><br>Professional Experience continued<br>Additional Experience<br>Education &amp; Certifications<br>Leadership &amp; Affiliations<br>Page footer</div>
+  </div>
+  <div class="rule-card">
+    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1a2744;margin-bottom:8px;">3-Page Resume — Content Order</div>
+    <div class="rule-body"><strong>Page 1:</strong><br>Header (name / title / contact)<br>Accent bar (.hbar)<br>Synopsis<br>Areas of Expertise (single column)<br>Tools<br>Professional Experience — content flows until page is full<br>Page footer<br><br><strong>Page 2:</strong><br>Professional Experience continued (flows until full)<br>Page footer<br><br><strong>Page 3:</strong><br>Additional Experience<br>Education &amp; Certifications<br>Leadership &amp; Affiliations<br>Page footer</div>
+  </div>
+  <div class="rule-card">
+    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1a2744;margin-bottom:8px;">Print Instructions</div>
+    <div class="rule-body">Browser: Chrome only<br>File → Print<br>Margins: None<br>Background graphics: On<br>Destination: Save as PDF</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- DOS AND DON'TS -->
+<div class="section-label">Rules</div>
+<div class="row" style="gap:16px;">
+  <div class="rule-card">
+    <div class="rule-head-yes">✓ &nbsp;Always</div>
+    <div class="rule-body">Use Helvetica Neue / Arial only<br>Em-dash bullets via CSS ::before<br>Job roles in reverse chronological order<br>Bold &lt;strong&gt; for key metrics<br>Accent color (#2a4080) for titles, section labels, bullet dashes, hbar<br>Contact line: 7.5pt / weight 300 / mid gray<br>Section labels: 6pt / 700 / 0.08em / uppercase<br>caraabrown.com (portfolio) in contact — no "available upon request"<br>Every bullet 2 printed lines or less — split longer bullets into two<br>Each bullet leads with action or outcome — not context or setup<br>Tools section: dot-separated list only (Figma · Miro · FigJam) — no sentences, no descriptions<br>Title line: must fit on 1 line — reduce font-size or letter-spacing if needed<br>Synopsis line-height: 1.5<br>Bullets line-height: 1.5<br>Areas of Expertise: single column / display:block only</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-head-no">✕ &nbsp;Never</div>
+    <div class="rule-body">Serif fonts anywhere<br>All-caps section labels in serif<br>Bullet points (• or ▪) — em-dash only<br>Bold lead-in labels inside bullets<br>Bullets longer than 2 printed lines — hard limit<br>Paragraphs inside bullet points<br>Sentences or descriptions in the Tools section — dot-separated list only<br>Headers or sub-headers inside job blocks<br>Emojis or decorative icons<br>Colored backgrounds on page body<br>Inline styles for typography — use CSS classes<br>More than 3 subheader title items (cap at 3)<br>Skills or keywords in subheader — roles/functions only<br>2-column Areas of Expertise layout — single column only<br>More than 3 pages<br>Missing footer on any page<br>Inline padding/margin overrides on .page that alter established margins<br>Locking content to a specific page — content flows naturally<br>"Kroger only on page 1" or any variation — BANNED<br>White space gaps on any page — content must fill naturally without overflow<br>Narrative or storytelling tone in synopsis<br>Numeric year counts — never "X years" or "X+ years"<br>"The work is rarely what it appears" or any variation<br>"I start there" or any variation<br><br><strong style="color:#791f1f;">Characters never allowed in body text:</strong><br>→ (use "to" instead)<br>— as a typed bullet character (CSS ::before only)<br>#CloseTheGap (use CloseTheGap)<br>Graduation years in Education section</div>
+  </div>
+  <div class="rule-card">
+    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1a2744;margin-bottom:8px;">Synopsis Rules</div>
+    <div class="rule-body"><strong style="color:#791f1f;">1 paragraph only — hard limit</strong><br>100–150 words maximum<br>No bullet points<br>No narrative, no storytelling, no anecdotes<br>No rhetorical questions or "clever" framing<br>No snappy openers or cute asides<br>Tone: direct, factual, credential-forward — like a pitch, not a story<br>Lead with title + years of experience + domain breadth<br>Include 3–4 core capability clusters<br>Reference 1–2 signature outcomes (metrics preferred)<br>End with MBA credential sentence<br><br><strong style="color:#791f1f;">BANNED SENTENCES (never generate):</strong><br>"The work is rarely what it appears..."<br>"what looks like a technology gap is usually a diagnostic failure"<br>"I start there"<br>Any variation of the above</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- GENERATION PROMPT -->
+<div class="section-label">Resume Generation Prompt</div>
+<div class="prompt-block">
+  <div class="prompt-label">Copy &amp; paste this prompt to regenerate the resume format</div>
+  <pre>
+Generate a print-ready HTML resume for Cara A. Brown, MBA — either 2-page or 3-page depending on the selected format. Output a single self-contained HTML file.
+
+──────────────────────────────────────────
+DOCUMENT SETUP
+──────────────────────────────────────────
+• Font: Helvetica Neue, Arial, sans-serif — ONLY. No serif fonts anywhere.
+• Page size: 8.5in × 11in per page, overflow: hidden
+• Page padding — 2-page resume: 0.28in top/bottom · 0.6in left/right
+• Page padding — 3-page resume: 0.32in top · 0.18in bottom · 0.55in left/right
+• Background: #ffffff page surface, #7a7975 body background (screen only)
+• Box shadow on pages for screen view; removed in @media print
+• Print instructions bar: fixed, navy background (#1a2744), "Save as PDF" button
+
+──────────────────────────────────────────
+COLOR VARIABLES
+──────────────────────────────────────────
+--black: #0d0d0b   (name text)
+--ink:   #1e1e1c   (body / bullet text)
+--navy:  #1a2744   (print bar)
+--accent:#2a4080   (title, section labels, bullet dashes, hbar, job titles)
+--mid:   #888680   (contact line, dates, footer text)
+--rule:  #dddad3   (dividers, section label underline, footer border)
+--white: #ffffff   (page surface)
+
+──────────────────────────────────────────
+SPACING VALUES (v4)
+──────────────────────────────────────────
+.hbar margin: 0.04in 0
+.sec-label margin-top: 0.06in · margin-bottom: 0.05in · padding-bottom: 0.02in
+.synopsis line-height: 1.5 · margin-bottom: 0.05in
+.job-block margin-bottom: 0.07in
+.bullets li line-height: 1.5 · margin-bottom: 0.02in
+.expertise-grid margin-bottom: 0.06in
+.exp-cat margin-top: 0.02in
+.resume-name margin-bottom: 1px
+.resume-contact margin-top: 2px
+
+──────────────────────────────────────────
+PAGE STRUCTURE — ALL RESUMES
+──────────────────────────────────────────
+1. .resume-name — 25pt / 700 / −0.02em tracking / --black
+   Last name suffix (MBA) in a &lt;span&gt; at font-weight 300
+
+2. .resume-title — 6.5–7.8pt / 600 / 0.08–0.1em tracking / uppercase / --accent
+   MAXIMUM 3 ITEMS separated by · — MUST fit on 1 line
+   Items must be ROLE TITLES or FUNCTIONS — NOT skills or keywords
+   If it wraps, reduce font-size or letter-spacing until it fits on 1 line
+
+3. .resume-contact — 7.5pt / 300 / 0.03em / --mid / margin-top: 2px
+   Format: phone · email · linkedin · caraabrown.com (portfolio)
+
+4. .hbar — 2px height / --accent background / PAGE 1 ONLY
+   2-page resume: margin 0.11in 0
+   3-page resume: margin 0.04in 0
+   Never appears on pages 2 or 3
+
+5. .sec-label — 6pt / 700 / 0.08em tracking / uppercase / --accent
+   border-bottom: 1px solid --rule / padding-bottom 0.02in / margin-top 0.06in / margin-bottom 0.05in
+
+6. Synopsis (.synopsis) — 7.5pt / 400 / 1.5 line-height / --ink / margin-bottom 0.05in
+   EXACTLY 1 paragraph. 100–150 words. No bullets. Bold 2–3 key skill clusters with &lt;strong&gt;.
+   Tone: direct, factual, credential-forward. NOT narrative. NOT storytelling. NOT anecdotal.
+   No numeric year counts — never "X years" or "X+ years" — use "proven" instead.
+   BANNED — never write these or any variation:
+     "The work is rarely what it appears"
+     "what looks like a technology gap is usually a diagnostic failure"
+     "I start there"
+     Any rhetorical "what looks like X is really Y" construction
+   End with: MBA, Design Strategy — California College of the Arts, ranked #2 graduate design program globally.
+
+7. Areas of Expertise — .expertise-grid
+   display: block (SINGLE COLUMN — no CSS grid, no 2-col layout)
+   Each category: .exp-cat (6pt / 700 / 0.1em / uppercase / --ink / margin-top 0.02in)
+                  .exp-detail (7pt / 300 / 1.45 line-height / --mid)
+   Skills separated by · middot
+
+8. Tools — .exp-detail / dot-separated list only — no sentences, no descriptions
+   Example: Figma · Miro · FigJam · Adobe Creative Suite · Confluence · Microsoft 365
+
+9. Professional Experience — .job-block / margin-bottom 0.07in
+   .job-header: flex / space-between / align baseline
+     .job-org: 8.5pt / 700 / 0.04em / uppercase / --black
+     .job-date: 7pt / 300 / 0.04em / --mid / white-space: nowrap
+   .job-title: 8pt / 600 / --accent / margin-bottom 0.05in
+   ul.bullets: list-style none
+     li: 7.5pt / --ink / 1.5 line-height / margin-bottom 0.02in / padding-left 0.15in
+     li::before: content '—' / position absolute / left 0 / --accent / font-weight 600
+     Every bullet 2 printed lines or less — split longer bullets into two
+     Each bullet leads with action or outcome — not context or setup
+     Bold metrics with &lt;strong&gt; (font-weight 600 / --black)
+
+10. .resume-footer: margin-top auto / padding-top 0.08in / border-top 1px solid --rule
+    flex / space-between / 6pt / 300 / 0.05em / --mid
+    Format: Name | Page X of [total] | caraabrown.com
+    MANDATORY on every page — must be last child inside every .page div
+
+──────────────────────────────────────────
+PAGE FLOW — ALL RESUMES
+──────────────────────────────────────────
+• Content flows naturally from page to page — never locked to a specific page
+• BANNED: any rule that restricts content to a specific page (e.g. "Kroger only on page 1")
+• Fill each page as naturally as content allows — never leave a page mostly empty
+• Never overflow a page — split at a logical break point
+• Every .page uses display:flex; flex-direction:column
+• .hbar appears on page 1 only — never on pages 2 or 3
+• Footer pins to bottom via margin-top:auto on .resume-footer
+
+──────────────────────────────────────────
+2-PAGE RESUME — CONTENT SECTIONS
+──────────────────────────────────────────
+Page 1: Header · hbar · Synopsis · Areas of Expertise · Tools · Professional Experience (flows until full) · Footer
+Page 2: Professional Experience continued · Additional Experience · Education &amp; Certifications · Leadership &amp; Affiliations · Footer
+
+──────────────────────────────────────────
+3-PAGE RESUME — CONTENT SECTIONS
+──────────────────────────────────────────
+Page 1: Header · hbar · Synopsis · Areas of Expertise · Tools · Professional Experience (flows until full) · Footer
+Page 2: Professional Experience continued (flows until full) · Footer
+Page 3: Additional Experience · Education &amp; Certifications · Leadership &amp; Affiliations · Footer
+
+Additional Experience blocks (.addl-item):
+  .addl-org: 8pt / 700 / uppercase / --black
+  .addl-desc: 7pt / 300 / 1.48 line-height / --ink
+  Includes: GardaWorld (no dates) · Keyways · City of Oakland / Lab@OPM · Earlier Experience
+
+Education (.edu-row: flex):
+  .edu-deg: 8pt / 600 / --black / flex 0 0 3in
+  .edu-school: 7.5pt / 300 / --mid
+  .certs: 7pt / 300 / 1.55 line-height / --ink
+  No graduation years
+
+──────────────────────────────────────────
+PRINT CSS
+──────────────────────────────────────────
+@media print {
+  @page { size: letter; margin: 0; }
+  body { background: #ffffff; }
+  .print-bar { display: none; }
+  .page { box-shadow: none; margin: 0; height: 11in; page-break-after: always; }
+  .page:last-child { page-break-after: avoid; }
+}
+
+──────────────────────────────────────────
+CONTENT RULES
+──────────────────────────────────────────
+• Tools section: dot-separated list only — no sentences, no descriptions
+• Subheader: 3 items MAX · role titles/functions ONLY — no skills, no keywords
+• Areas of Expertise: single column (display:block) — no 2-column grid
+• Section labels: never in serif, letter-spacing 0.08em only
+• Bullets: em-dash ONLY via CSS ::before — never •, ▪, or ➝
+• Every bullet 2 printed lines or less — split if longer
+• Each bullet leads with action or outcome — not context or setup
+• No bold lead-in labels inside bullets
+• Synopsis: 1 paragraph, 100–150 words, factual/credential-forward, no narrative, line-height 1.5
+• No numeric year counts anywhere — use "proven" instead
+• Strong tags: metrics and key skill clusters only — use sparingly
+• Alanne International: in Professional Experience dated 01/2026–Present
+• GardaWorld: in Additional Experience, no dates
+• No graduation years in Education
+• MBA credential closes the synopsis
+• Footer mandatory on all pages — if missing, content is overflowing the page
+• Never add inline padding or margin overrides that alter established page margins
+• No white space gaps on any page — content must fill each page naturally without overflow
+• Content flows naturally page to page — never artificially constrained to a specific page
+• Characters never allowed in body text: → (use "to"), typed — as bullet (CSS only), #CloseTheGap (use CloseTheGap), graduation years
+
+──────────────────────────────────────────
+COVER LETTER RULES
+──────────────────────────────────────────
+• Font: same as resume — 'Helvetica Neue', Arial, sans-serif — never serif, never browser default
+• Body font size: 10pt, color #1e1e1c, line-height 1.65
+• Header block: identical to resume — name, title line, contact, hbar accent bar
+• hbar: 2px solid #2a4080, margin 0.05in 0
+• Date: 9pt, color #888680, margin-bottom 0.18in
+• Salutation and body paragraphs: 10pt, color #1e1e1c, margin-bottom 0.18in
+• Closing / signature name: bold, 10pt, color #0d0d0b
+• Signature contact lines: 9pt, color #888680
+
+COVER LETTER TABLE (needs/abilities match table):
+• Plain, minimal — no background colors on any cell, no shading
+• Header row: background #1a2744, text white, font 7.5pt bold, letter-spacing 0.1em, uppercase, padding 8px 12px
+• Data rows: white background only — no alternating row colors, no tint
+• Cell borders: 1px solid #dddad3 on all sides
+• Cell font: 9pt, color #1e1e1c, line-height 1.55, padding 8px 12px
+• Left column width: ~42%, no bold
+• No zebra striping — all data rows identical white background
+• Table width: 100% of content area
+• Reference visual: screenshot of plain Cisco cover letter table (June 2026)
+
+COVER LETTER DELIVERY:
+• Deliver ONE .html file with embedded Download as PDF and Download as .docx buttons
+• Do NOT deliver separate .pdf or .docx files alongside the .html — those are for download only
+• Embed base64-encoded .docx and .pdf directly into the HTML as blob download links
+• PDF and .docx are generated server-side and embedded — not created as standalone deliverables
+  </pre>
+</div>
+
+</body>
+</html>
